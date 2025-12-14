@@ -151,12 +151,13 @@
           <a href="{{ url_for('internships.internship_list') }}">Internships</a>
           <a href="{{ url_for('student.my_applications') }}">Applications</a>
           <a href="{{ url_for('ojt.ojt_list') }}">OJT</a>
-
+          <a href="{{ url_for('resources.index') }}">Resources</a>
 
         {% elif current_user.role == 'employer' %}
           <a href="{{ url_for('employer.dashboard') }}">Dashboard</a>
-          <a href="{{ url_for('employer.internships') }}">My Internships</a>
-
+          <a href="{{ url_for('employer.post_internship') }}">My Internships</a>
+          <a href="{{ url_for('employer.view_postings') }}">My Internships</a>
+      
         {% elif current_user.role == 'admin' %}
           <a href="{{ url_for('admin.dashboard') }}">Admin Panel</a>
         {% endif %}
