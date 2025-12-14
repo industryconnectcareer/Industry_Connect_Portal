@@ -206,7 +206,7 @@ def configure_logging(app):
     app.logger.setLevel(logging.INFO)
     app.logger.info("Industry Connect Portal started")
 
-
+app = create_app()
 # =====================================================
 # RUN APP (DEV ONLY)
 # =====================================================
