@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background:#f3f6f7; padding:20px;">
+
+<div style="
+    max-width:600px;
+    margin:auto;
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+">
+
+    <!-- Header -->
+    <div style="text-align:center; margin-bottom:22px;">
+        <h2 style="color:#0a575d; margin:0; font-size:24px;">
+            OJT Enrollment Confirmed ✔
+        </h2>
+        <p style="color:#555; font-size:14px; margin-top:6px;">
+            You are officially enrolled in an On-the-Job Training Program
+        </p>
+    </div>
+
+    <!-- Greeting -->
+    <p style="font-size:16px; color:#333;">Hello <b>{{ student_name }}</b>,</p>
+
+    <p style="font-size:15px; color:#444; line-height:1.6;">
+        Congratulations! You have successfully enrolled in the following 
+        <b>On-the-Job Training (OJT) program</b>, which provides real industry experience similar to internships.
+    </p>
+
+    <!-- OJT Info Box -->
+    <div style="
+        background:#e9f7f6;
+        padding:18px;
+        border-left:5px solid #0a575d;
+        border-radius:10px;
+        margin:20px 0;
+    ">
+        <h3 style="color:#0a575d; margin:0 0 10px 0; font-size:20px;">
+            {{ ojt_name }}
+        </h3>
+
+        <p style="margin:6px 0; color:#333;"><b>Company:</b> {{ company }}</p>
+        <p style="margin:6px 0; color:#333;"><b>Duration:</b> {{ duration }}</p>
+        <p style="margin:6px 0; color:#333;"><b>Mode:</b> {{ mode }}</p>
+        <p style="margin:6px 0; color:#333;"><b>Start Date:</b> {{ start_date }}</p>
+    </div>
+
+    <!-- CTA Button -->
+    <div style="text-align:center; margin-top:25px;">
+        <a href="{{ dashboard_link }}"
+           style="
+                background:#0a575d;
+                color:white;
+                padding:12px 26px;
+                border-radius:8px;
+                text-decoration:none;
+                font-size:16px;
+                font-weight:600;
+                display:inline-block;
+           ">
+           View OJT Details
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <p style="margin-top:25px; font-size:14px; color:#666; line-height:1.6;">
+        Make the most of this opportunity to gain real-world exposure and practical skills.  
+        We wish you success in your OJT journey!
+        <br><br>
+        Regards,<br>
+        <b style="color:#0a575d;">Industry Connect</b>
+    </p>
+
+    <hr style="margin-top:25px; border:none; border-top:1px solid #e4e4e4;">
+
+    <p style="font-size:12px; color:#999; text-align:center;">
+        This is an automated email. Please do not reply.
+    </p>
+
+</div>
+
+</body>
+</html>

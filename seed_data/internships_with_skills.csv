@@ -1,0 +1,98 @@
+internship_id,company_id,title,mode,location,required_skills,duration,stipend,responsibilities
+1,1,Marketing Intern,On-site,Mumbai,Digital Marketing; SEO; Content Writing,1 Month,3000 / month,Manage social media; Create content; Assist campaigns
+2,20,Accounting Intern,Remote,Mumbai,Tally; Excel; GST Basics,2 Months,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+3,21,Business Analytics Intern,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,6 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+4,18,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,6 Months,3000 / month,Track inventory; Coordinate vendors; Optimize supply
+5,37,HR Intern,Hybrid,Mumbai,Recruitment; Communication; MS Office,1 Month,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+6,6,Supply Chain Intern,Hybrid,Mumbai,Inventory Management; Excel; Logistics,2 Months,"8,000",Track inventory; Coordinate vendors; Optimize supply
+7,10,HR Intern,Remote,Mumbai,Recruitment; Communication; MS Office,2 Months,8000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+8,4,Finance Intern,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,2 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+9,32,Investment Research Intern,Remote,Mumbai,Equity Research; Valuation; Financial Modeling,1 Month,Unpaid,Research stocks; Build valuation models; Prepare reports
+10,26,Finance Intern,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,8000 / month,Analyze financial data; Prepare reports; Assist budgeting
+11,37,Business Analytics Intern,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,3000 / month,Clean data; Create dashboards; Analyze trends
+12,16,Finance Intern,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,5000 / month,Analyze financial data; Prepare reports; Assist budgeting
+13,3,Banking Operations Intern,Remote,Mumbai,Banking Operations; Customer Handling,3 Months,10000 / month,Assist branch operations; Handle documentation
+14,39,Business Analytics Intern,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,Unpaid,Clean data; Create dashboards; Analyze trends
+15,31,Banking Operations Intern,Hybrid,Mumbai,Banking Operations; Customer Handling,1 Month,8000 / month,Assist branch operations; Handle documentation
+16,44,HR Intern,Remote,Mumbai,Recruitment; Communication; MS Office,1 Month,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+17,24,Banking Operations Intern,Hybrid,Mumbai,Banking Operations; Customer Handling,2 Months,3000 / month,Assist branch operations; Handle documentation
+18,25,Taxation Intern,Hybrid,Mumbai,Income Tax; GST; Compliance,1 Month,8000 / month,Prepare tax returns; Assist audits; Maintain files
+19,10,Supply Chain Intern,Hybrid,Mumbai,Inventory Management; Excel; Logistics,1 Month,Unpaid,Track inventory; Coordinate vendors; Optimize supply
+20,19,Taxation Intern,On-site,Mumbai,Income Tax; GST; Compliance,3 Months,5000 / month,Prepare tax returns; Assist audits; Maintain files
+21,26,Business Analytics Intern,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+22,37,Banking Operations Intern,Hybrid,Mumbai,Banking Operations; Customer Handling,1 Month,5000 / month,Assist branch operations; Handle documentation
+23,9,Supply Chain Intern,Hybrid,Mumbai,Inventory Management; Excel; Logistics,1 Month,10000 / month,Track inventory; Coordinate vendors; Optimize supply
+24,16,Business Analytics Intern,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+25,32,Marketing Intern,Hybrid,Mumbai,Digital Marketing; SEO; Content Writing,1 Month,5000 / month,Manage social media; Create content; Assist campaigns
+26,15,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,1 Month,3000 / month,Track inventory; Coordinate vendors; Optimize supply
+27,5,Finance Intern,On-site,Mumbai,Financial Analysis; Excel; Ratio Analysis,3 Months,Unpaid,Analyze financial data; Prepare reports; Assist budgeting
+28,10,Accounting Intern,Remote,Mumbai,Tally; Excel; GST Basics,1 Month,8000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+29,32,Business Analytics Intern,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+30,37,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,3 Months,5000 / month,Track inventory; Coordinate vendors; Optimize supply
+31,36,HR Intern,Remote,Mumbai,Recruitment; Communication; MS Office,3 Months,3000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+32,20,Accounting Intern,On-site,Mumbai,Tally; Excel; GST Basics,2 Months,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+33,48,Business Analytics Intern,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+34,7,Business Analytics Intern,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,1 Month,3000 / month,Clean data; Create dashboards; Analyze trends
+35,8,Banking Operations Intern,On-site,Mumbai,Banking Operations; Customer Handling,3 Months,5000 / month,Assist branch operations; Handle documentation
+36,29,Accounting Intern,On-site,Mumbai,Tally; Excel; GST Basics,2 Months,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+37,20,Entrepreneurship Intern,Remote,Mumbai,Business Planning; Market Research,6 Months,Unpaid,Conduct market research; Support startup strategy
+38,17,Accounting Intern,Remote,Mumbai,Tally; Excel; GST Basics,1 Month,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+39,34,Finance Intern,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,5000 / month,Analyze financial data; Prepare reports; Assist budgeting
+40,7,HR Intern,Remote,Mumbai,Recruitment; Communication; MS Office,3 Months,5000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+41,49,Business Analytics Intern,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+42,30,Taxation Intern,On-site,Mumbai,Income Tax; GST; Compliance,6 Months,10000 / month,Prepare tax returns; Assist audits; Maintain files
+43,2,Banking Operations Intern,On-site,Mumbai,Banking Operations; Customer Handling,2 Months,3000 / month,Assist branch operations; Handle documentation
+44,42,Finance Intern,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,3 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+45,38,Business Analytics Intern,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,3000 / month,Clean data; Create dashboards; Analyze trends
+46,11,Accounting Intern,Hybrid,Mumbai,Tally; Excel; GST Basics,3 Months,8000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+47,50,Entrepreneurship Intern,Hybrid,Mumbai,Business Planning; Market Research,3 Months,5000 / month,Conduct market research; Support startup strategy
+48,50,Finance Intern,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,1 Month,3000 / month,Analyze financial data; Prepare reports; Assist budgeting
+49,30,Entrepreneurship Intern,Remote,Mumbai,Business Planning; Market Research,1 Month,5000 / month,Conduct market research; Support startup strategy
+50,28,Investment Research Intern,Hybrid,Mumbai,Equity Research; Valuation; Financial Modeling,3 Months,8000 / month,Research stocks; Build valuation models; Prepare reports
+51,28,Supply Chain Intern,Hybrid,Mumbai,Inventory Management; Excel; Logistics,3 Months,3000 / month,Track inventory; Coordinate vendors; Optimize supply
+52,7,Taxation Intern,Remote,Mumbai,Income Tax; GST; Compliance,6 Months,8000 / month,Prepare tax returns; Assist audits; Maintain files
+53,11,HR Intern,On-site,Mumbai,Recruitment; Communication; MS Office,2 Months,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+54,9,Supply Chain Intern,Hybrid,Mumbai,Inventory Management; Excel; Logistics,6 Months,8000 / month,Track inventory; Coordinate vendors; Optimize supply
+55,13,Investment Research Intern,Hybrid,Mumbai,Equity Research; Valuation; Financial Modeling,6 Months,3000 / month,Research stocks; Build valuation models; Prepare reports
+56,8,HR Intern,Hybrid,Mumbai,Recruitment; Communication; MS Office,1 Month,5000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+57,47,Marketing Intern,On-site,Mumbai,Digital Marketing; SEO; Content Writing,3 Months,5000 / month,Manage social media; Create content; Assist campaigns
+58,28,Entrepreneurship Intern,On-site,Mumbai,Business Planning; Market Research,2 Months,3000 / month,Conduct market research; Support startup strategy
+59,23,Business Analytics Intern,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,8000 / month,Clean data; Create dashboards; Analyze trends
+60,8,Banking Operations Intern,Remote,Mumbai,Banking Operations; Customer Handling,1 Month,5000 / month,Assist branch operations; Handle documentation
+61,20,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,2 Months,5000 / month,Track inventory; Coordinate vendors; Optimize supply
+62,2,Banking Operations Intern,On-site,Mumbai,Banking Operations; Customer Handling,2 Months,3000 / month,Assist branch operations; Handle documentation
+63,41,Taxation Intern,Remote,Mumbai,Income Tax; GST; Compliance,6 Months,10000 / month,Prepare tax returns; Assist audits; Maintain files
+64,15,Banking Operations Intern,Remote,Mumbai,Banking Operations; Customer Handling,1 Month,5000 / month,Assist branch operations; Handle documentation
+65,47,Taxation Intern,Remote,Mumbai,Income Tax; GST; Compliance,3 Months,3000 / month,Prepare tax returns; Assist audits; Maintain files
+66,20,Business Analytics Intern,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,6 Months,Unpaid,Clean data; Create dashboards; Analyze trends
+67,29,Accounting Intern,Hybrid,Mumbai,Tally; Excel; GST Basics,6 Months,8000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+68,12,Marketing Intern,On-site,Mumbai,Digital Marketing; SEO; Content Writing,3 Months,8000 / month,Manage social media; Create content; Assist campaigns
+69,49,Marketing Intern,On-site,Mumbai,Digital Marketing; SEO; Content Writing,6 Months,8000 / month,Manage social media; Create content; Assist campaigns
+70,9,Banking Operations Intern,Hybrid,Mumbai,Banking Operations; Customer Handling,2 Months,8000 / month,Assist branch operations; Handle documentation
+71,23,HR Intern,Hybrid,Mumbai,Recruitment; Communication; MS Office,2 Months,5000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+72,35,HR Intern,Remote,Mumbai,Recruitment; Communication; MS Office,2 Months,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+73,3,HR Intern,On-site,Mumbai,Recruitment; Communication; MS Office,3 Months,8000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+74,27,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,2 Months,10000 / month,Track inventory; Coordinate vendors; Optimize supply
+75,4,Business Analytics Intern,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+76,4,Marketing Intern,Remote,Mumbai,Digital Marketing; SEO; Content Writing,2 Months,10000 / month,Manage social media; Create content; Assist campaigns
+77,18,Finance Intern,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,2 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+78,45,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,2 Months,8000 / month,Track inventory; Coordinate vendors; Optimize supply
+79,40,Marketing Intern,Remote,Mumbai,Digital Marketing; SEO; Content Writing,3 Months,3000 / month,Manage social media; Create content; Assist campaigns
+80,9,Accounting Intern,Remote,Mumbai,Tally; Excel; GST Basics,1 Month,10000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+81,10,Finance Intern,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,2 Months,3000 / month,Analyze financial data; Prepare reports; Assist budgeting
+82,32,HR Intern,Remote,Mumbai,Recruitment; Communication; MS Office,1 Month,10000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+83,38,Taxation Intern,Hybrid,Mumbai,Income Tax; GST; Compliance,2 Months,10000 / month,Prepare tax returns; Assist audits; Maintain files
+84,1,Supply Chain Intern,Remote,Mumbai,Inventory Management; Excel; Logistics,6 Months,5000 / month,Track inventory; Coordinate vendors; Optimize supply
+85,10,Accounting Intern,Hybrid,Mumbai,Tally; Excel; GST Basics,6 Months,10000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+86,4,Business Analytics Intern,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,1 Month,10000 / month,Clean data; Create dashboards; Analyze trends
+87,32,Investment Research Intern,Hybrid,Mumbai,Equity Research; Valuation; Financial Modeling,1 Month,3000 / month,Research stocks; Build valuation models; Prepare reports
+88,4,Business Analytics Intern,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+89,49,Taxation Intern,On-site,Mumbai,Income Tax; GST; Compliance,6 Months,5000 / month,Prepare tax returns; Assist audits; Maintain files
+90,11,Supply Chain Intern,Hybrid,Mumbai,Inventory Management; Excel; Logistics,3 Months,8000 / month,Track inventory; Coordinate vendors; Optimize supply
+91,46,Banking Operations Intern,On-site,Mumbai,Banking Operations; Customer Handling,6 Months,8000 / month,Assist branch operations; Handle documentation
+92,19,Banking Operations Intern,Hybrid,Mumbai,Banking Operations; Customer Handling,3 Months,Unpaid,Assist branch operations; Handle documentation
+93,25,Supply Chain Intern,On-site,Mumbai,Inventory Management; Excel; Logistics,6 Months,8000 / month,Track inventory; Coordinate vendors; Optimize supply
+94,49,Marketing Intern,Remote,Mumbai,Digital Marketing; SEO; Content Writing,2 Months,5000 / month,Manage social media; Create content; Assist campaigns
+95,32,Finance Intern,On-site,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+96,46,Investment Research Intern,On-site,Mumbai,Equity Research; Valuation; Financial Modeling,2 Months,3000 / month,Research stocks; Build valuation models; Prepare reports
+97,49,Finance Intern,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,8000 / month,Analyze financial data; Prepare reports; Assist budgeting

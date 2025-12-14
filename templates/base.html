@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>{% block title %}Industry Connect Portal{% endblock %}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    :root {
+      --primary: #0a575d;
+      --primary-dark: #08474b;
+      --light-bg: #f4ffff;
+      --white: #ffffff;
+    }
+
+    /* ================= HEADER ================= */
+    .site-header {
+      width: 100%;
+      background: rgba(10, 87, 93, 0.95);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 0;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ================= BRAND ================= */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      height: 40px;
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: .5px;
+    }
+
+    /* ================= NAV ================= */
+    .main-nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 500;
+      transition: 0.25s;
+    }
+
+    .main-nav a:hover {
+      color: #dffefe;
+      transform: translateY(-2px);
+    }
+
+    /* ================= BUTTON ================= */
+    .btn-white {
+      padding: 8px 18px;
+      background: #ffffff;
+      color: var(--primary) !important;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      margin-left: 10px;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .btn-white:hover {
+      background: var(--light-bg);
+      color: var(--primary-dark) !important;
+      transform: translateY(-2px);
+    }
+
+    .auth-links {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ================= MAIN ================= */
+    .site-main {
+      min-height: 70vh;
+      padding: 30px 0;
+    }
+
+    /* ================= FOOTER ================= */
+    .site-footer {
+      background: var(--primary);
+      color: white;
+      padding: 20px 0;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 900px) {
+      .main-nav { display: none; }
+      .brand-text { font-size: 18px; }
+      .btn-white { padding: 6px 14px; }
+    }
+  </style>
+
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <!-- BRAND -->
+    <a class="brand" href="{{ url_for('public.home') }}">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Industry Connect">
+      <span class="brand-text">Industry Connect</span>
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+
+      {% if current_user.is_authenticated %}
+
+        {% if current_user.role == 'college' %}
+          <a href="{{ url_for('college.dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('college.students') }}">Students</a>
+          <a href="{{ url_for('college.analytics') }}">Analytics</a>
+
+        {% elif current_user.role == 'student' %}
+          <a href="{{ url_for('student.dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('internships.internship_list') }}">Internships</a>
+          <a href="{{ url_for('student.my_applications') }}">Applications</a>
+          <a href="{{ url_for('ojt.ojt_list') }}">OJT</a>
+
+
+        {% elif current_user.role == 'employer' %}
+          <a href="{{ url_for('employer.dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('employer.internships') }}">My Internships</a>
+
+        {% elif current_user.role == 'admin' %}
+          <a href="{{ url_for('admin.dashboard') }}">Admin Panel</a>
+        {% endif %}
+
+      {% else %}
+        <!-- PUBLIC NAV -->
+        <a href="{{ url_for('public.home') }}">Home</a>
+        <a href="{{ url_for('internships.internship_list') }}">Internships</a>
+        <a href="{{ url_for('ojt.ojt_list') }}">OJT</a>
+        <a href="{{ url_for('career.career_path') }}">Career Path</a>
+        <a href="{{ url_for('resources.index') }}">Resources</a>
+      {% endif %}
+
+    </nav>
+
+    <!-- AUTH BUTTONS -->
+    <div class="auth-links">
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('auth.logout') }}" class="btn-white">Logout</a>
+      {% else %}
+        <a href="{{ url_for('auth.login') }}" class="btn-white">Login</a>
+        <a href="{{ url_for('auth.register') }}" class="btn-white">Register</a>
+      {% endif %}
+    </div>
+
+  </div>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main class="site-main container">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    © Industry Connect Portal • Empowering Commerce Students for Careers
+  </div>
+</footer>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

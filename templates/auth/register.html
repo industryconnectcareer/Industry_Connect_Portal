@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+/* ---------- CONTAINER ---------- */
+.register-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* ---------- CARD ---------- */
+.register-box {
+    width: 520px;
+    background: rgba(255,255,255,0.95);
+    padding: 35px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
+}
+
+.register-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: #0a575d;
+    margin-bottom: 12px;
+}
+
+.register-sub {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+/* ---------- INPUT ---------- */
+.input-wrapper {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-field, .role-dropdown {
+    width: 100%;
+    padding: 12px 42px 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #d6d6d6;
+    transition: 0.25s;
+}
+
+.input-field:focus,
+.role-dropdown:focus {
+    border-color: #0a575d;
+    box-shadow: 0 0 6px rgba(10,87,93,0.25);
+}
+
+.input-icon, .toggle-eye {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #777;
+}
+
+.toggle-eye {
+    cursor: pointer;
+}
+
+.toggle-eye:hover {
+    color: #0a575d;
+}
+
+/* ---------- PASSWORD STRENGTH ---------- */
+#password-strength {
+    margin-top: -10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ---------- CONDITIONAL BOX ---------- */
+#admin-key-box,
+#college-box,
+#student-college-box {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- BUTTON ---------- */
+.btn-primary {
+    width: 100%;
+    background: #0a575d;
+    padding: 12px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #094c51;
+}
+
+/* ---------- FOOTER ---------- */
+.register-footer {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+}
+.register-footer a {
+    color: #0a575d;
+    font-weight: 600;
+}
+</style>
+
+<div class="register-container">
+    <div class="register-box">
+
+        <h2>Create Your Account</h2>
+        <p class="register-sub">Sign up to access internships, analytics & career tools</p>
+
+        <form method="POST">
+
+            <!-- NAME -->
+            <label>Full Name</label>
+            <div class="input-wrapper">
+                <input type="text" name="name" class="input-field" required>
+                <span class="input-icon">👤</span>
+            </div>
+
+            <!-- EMAIL -->
+            <label>Email</label>
+            <div class="input-wrapper">
+                <input type="email" name="email" class="input-field" required>
+                <span class="input-icon">📧</span>
+            </div>
+
+            <!-- PASSWORD -->
+            <label>Password</label>
+            <div class="input-wrapper">
+                <input type="password" id="password-field" name="password" class="input-field" required>
+                <span class="toggle-eye" onclick="togglePassword()">👁</span>
+            </div>
+            <div id="password-strength"></div>
+
+            <!-- ROLE -->
+            <label>Register As</label>
+            <select name="role" id="role-selector" class="role-dropdown" required>
+                <option value="student">Student</option>
+                <option value="employer">Employer</option>
+                <option value="college">College (Apply)</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <!-- STUDENT → COLLEGE ID -->
+            <div id="student-college-box">
+                <label>College ID</label>
+                <input type="text"
+                       name="college_code"
+                       id="college-code-input"
+                       class="input-field"
+                       placeholder="Enter College ID provided by your college">
+            </div>
+
+            <!-- ADMIN KEY -->
+            <div id="admin-key-box">
+                <label>Admin Secret Key</label>
+                <input type="password" name="admin_key" class="input-field">
+            </div>
+
+            <!-- COLLEGE APPLICATION -->
+            <div id="college-box">
+
+                <label>College Name</label>
+                <input type="text" name="college_name" class="input-field">
+
+                <label>Official College Email</label>
+                <input type="email" name="college_email" class="input-field">
+
+                <label>University</label>
+                <input type="text" name="university" class="input-field">
+
+                <label>NAAC Accreditation</label>
+                <input type="text" name="accreditation" class="input-field">
+
+                <label>College Website</label>
+                <input type="url" name="website" class="input-field">
+
+            </div>
+
+            <button type="submit" class="btn-primary">Submit</button>
+        </form>
+
+        <p class="register-footer">
+            Already have an account?
+            <a href="{{ url_for('auth.login') }}">Login</a>
+        </p>
+
+    </div>
+</div>
+
+<script>
+function togglePassword() {
+    const f = document.getElementById("password-field");
+    f.type = f.type === "password" ? "text" : "password";
+}
+
+const roleSelector = document.getElementById("role-selector");
+const adminBox = document.getElementById("admin-key-box");
+const collegeBox = document.getElementById("college-box");
+const studentBox = document.getElementById("student-college-box");
+const collegeInput = document.getElementById("college-code-input");
+
+function handleRoleChange() {
+    adminBox.style.display = "none";
+    collegeBox.style.display = "none";
+    studentBox.style.display = "none";
+
+    collegeInput.required = false;
+    collegeInput.value = "";
+
+    if (roleSelector.value === "admin") {
+        adminBox.style.display = "block";
+    }
+
+    if (roleSelector.value === "college") {
+        collegeBox.style.display = "block";
+    }
+
+    if (roleSelector.value === "student") {
+        studentBox.style.display = "block";
+        collegeInput.required = true; // 🔒 ENFORCED
+    }
+}
+
+// Run on dropdown change
+roleSelector.addEventListener("change", handleRoleChange);
+
+// 🔥 RUN ON PAGE LOAD (THIS FIXES EVERYTHING)
+document.addEventListener("DOMContentLoaded", handleRoleChange);
+
+// Password strength
+document.getElementById("password-field").addEventListener("input", function () {
+    const v = this.value;
+    let s = 0;
+    if (v.length >= 8) s++;
+    if (/[A-Z]/.test(v)) s++;
+    if (/[0-9]/.test(v)) s++;
+    if (/[@$!%*?&]/.test(v)) s++;
+
+    const msg = ["Weak ❌", "Fair ⚠️", "Good 👍", "Strong 💪"];
+    const col = ["#d32f2f", "#f57c00", "#1976d2", "#388e3c"];
+    document.getElementById("password-strength").textContent = msg[s - 1] || "";
+    document.getElementById("password-strength").style.color = col[s - 1] || "#333";
+});
+</script>
+
+{% endblock %}

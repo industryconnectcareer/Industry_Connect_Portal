@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background:#f4f6f7; padding:20px;">
+
+<div style="
+    max-width:600px;
+    margin:auto;
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+">
+
+    <!-- Header -->
+    <h2 style="color:#006d66; margin-top:0; font-size:24px;">
+        Application Update — Not Selected
+    </h2>
+
+    <!-- Greeting -->
+    <p style="font-size:16px; color:#333;">
+        Hello <b>{{ student_name }}</b>,
+    </p>
+
+    <!-- Message -->
+    <p style="font-size:15px; color:#555; line-height:1.6;">
+        Thank you for applying to <b>{{ company }}</b>.  
+        After careful review, we regret to inform you that you were <b>not selected</b> for the internship role:
+    </p>
+
+    <h3 style="color:#004c46; font-size:20px; margin:8px 0 15px 0;">
+        {{ title }}
+    </h3>
+
+    <!-- Encouragement Box -->
+    <div style="
+        background:#e8f5f4;
+        padding:15px;
+        border-left:5px solid #0a575d;
+        border-radius:10px;
+        margin-bottom:20px;
+        font-size:15px;
+        color:#444;
+        line-height:1.6;
+    ">
+        Internship rejections are a normal part of the journey —  
+        and they do <b>not</b> reflect your potential.  
+        New opportunities are added every day. Keep applying!
+    </div>
+
+    <!-- CTA Button -->
+    <div style="text-align:center; margin-top:15px;">
+        <a href="{{ internships_link }}"
+           style="
+               background:#006d66;
+               color:#ffffff;
+               padding:12px 24px;
+               text-decoration:none;
+               border-radius:8px;
+               font-size:16px;
+               font-weight:600;
+               display:inline-block;
+           ">
+           Browse More Internships
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <p style="margin-top:25px; font-size:14px; color:#666; line-height:1.6;">
+        Wishing you the best in your ongoing internship search.  
+        <br><br>
+        Regards,<br>
+        <b style="color:#006d66;">Industry Connect</b>
+    </p>
+
+    <hr style="border:none; border-top:1px solid #e3e3e3; margin-top:25px;">
+    <p style="font-size:12px; color:#999; text-align:center;">
+        This is an automated email. Please do not reply.
+    </p>
+
+</div>
+
+</body>
+</html>

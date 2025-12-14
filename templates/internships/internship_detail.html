@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="internship-wrapper">
+
+    <!-- Back -->
+    <a href="{{ url_for('internships.internship_list') }}" class="back-btn">← Back to Internships</a>
+
+    <div class="content-grid">
+
+        <!-- LEFT CONTENT -->
+        <div>
+
+            <!-- HEADER CARD -->
+            <div class="header-card">
+                <h2 class="job-title">{{ internship.title }}</h2>
+
+                <p class="company-name">
+                    {{ internship.company_name or internship.company }}
+                </p>
+
+                <!-- Stipend -->
+                {% if internship.stipend %}
+                    <span class="stipend-pill">💰 {{ internship.stipend }}</span>
+                {% else %}
+                    <span class="stipend-pill unpaid">Unpaid</span>
+                {% endif %}
+
+                <!-- Skills -->
+                {% if internship.skill_list() %}
+                <div class="skills-box">
+                    {% for skill in internship.skill_list() %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- OVERVIEW -->
+            <div class="detail-card">
+                <h3><span class="icon">📌</span> Internship Overview</h3>
+
+                <div class="overview-list">
+                    <p><b>📍 Location:</b> {{ internship.location or "Not specified" }}</p>
+                    <p><b>🖥 Mode:</b> {{ internship.mode }}</p>
+                    <p><b>📂 Category:</b> {{ internship.category }}</p>
+                </div>
+            </div>
+
+            <!-- SKILLS -->
+            {% if internship.skill_list() %}
+            <div class="detail-card">
+                <h3><span class="icon">🧩</span> Required Skills</h3>
+                <ul class="styled-list">
+                    {% for skill in internship.skill_list() %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- RESPONSIBILITIES -->
+            {% if internship.responsibilities %}
+            <div class="detail-card">
+                <h3><span class="icon">📝</span> Responsibilities</h3>
+                <ul class="styled-list">
+                    {% for r in internship.responsibilities.split('.') if r.strip() %}
+                        <li>{{ r.strip() }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- COMPANY INFO -->
+            {% if internship.company_info %}
+            <div class="detail-card">
+                <h3><span class="icon">🏢</span> About the Company</h3>
+                <p>{{ internship.company_info }}</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div class="sidebar-card">
+            <h3 class="sidebar-title">Quick Summary</h3>
+
+            <div class="sidebar-row"><b>📍 Location</b><span>{{ internship.location or "Not specified" }}</span></div>
+            <div class="sidebar-row"><b>💼 Category</b><span>{{ internship.category }}</span></div>
+            <div class="sidebar-row"><b>🖥 Mode</b><span>{{ internship.mode }}</span></div>
+            <div class="sidebar-row"><b>💰 Stipend</b><span>{{ internship.stipend or "Unpaid" }}</span></div>
+
+            <a class="apply-btn-full" href="{{ url_for('internships.internship_apply', id=internship.id) }}">
+                Apply Now →
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ====================== STYLES ====================== -->
+<style>
+.internship-wrapper {
+    max-width: 1150px;
+    margin: auto;
+    padding: 20px;
+}
+
+.back-btn {
+    color: #0a575d;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.content-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 2fr 0.9fr;
+}
+
+/* HEADER CARD */
+.header-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.job-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0a575d;
+}
+.company-name {
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Stipend */
+.stipend-pill {
+    background: #ffe296;
+    padding: 6px 14px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.stipend-pill.unpaid {
+    background: #e8e8e8;
+}
+
+/* SKILL TAGS */
+.skills-box {
+    margin-top: 12px;
+}
+.skill-tag {
+    background: #0a575d;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    display: inline-block;
+    margin: 4px 5px 0 0;
+}
+
+/* DETAIL CARDS */
+.detail-card {
+    padding: 22px;
+    background: #ffffff;
+    border-radius: 14px;
+    margin-top: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+.detail-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 12px;
+}
+.icon {
+    margin-right: 6px;
+}
+
+.overview-list p {
+    margin: 6px 0;
+    color: #444;
+}
+
+/* List Styling */
+.styled-list li {
+    margin-bottom: 8px;
+    color: #444;
+}
+
+/* SIDEBAR */
+.sidebar-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 14px;
+    height: fit-content;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.sidebar-title {
+    font-size: 20px;
+    color: #0a575d;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.sidebar-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 14px;
+}
+.apply-btn-full {
+    width: 100%;
+    display: block;
+    background: #0a575d;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 18px;
+    font-weight: 600;
+}
+.apply-btn-full:hover {
+    background: #094d53;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+{% endblock %}

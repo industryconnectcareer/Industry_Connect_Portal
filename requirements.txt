@@ -1,0 +1,51 @@
+# ==============================
+# Core Flask Framework
+# ==============================
+Flask==3.0.3
+Werkzeug==3.0.2
+
+# ==============================
+# Flask Extensions
+# ==============================
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+Flask-Mail==0.9.1
+Flask-Bcrypt==1.0.1
+
+# ==============================
+# Database / ORM
+# ==============================
+SQLAlchemy==2.0.30
+
+# ==============================
+# Environment & Utilities
+# ==============================
+python-dotenv==1.0.1
+python-slugify==8.0.1
+
+# ==============================
+# Data Handling & Analysis
+# ==============================
+pandas==2.2.2
+
+# ==============================
+# PDF / Report Generation
+# ==============================
+reportlab==4.2.2
+
+# ==============================
+# Email & Security (standard libs excluded)
+# ==============================
+email-validator==2.2.0
+
+# ==============================
+# AI / ML (used in recommender & skill analysis)
+# ==============================
+numpy==1.26.4
+scikit-learn==1.4.2
+scipy==1.12.0
+
+# ==============================
+# HTTP / Requests
+# ==============================
+requests==2.31.0

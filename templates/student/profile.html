@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="profile-container">
+
+    <!-- Header -->
+    <div class="profile-header">
+        <h2>My Profile</h2>
+        <p>Update your academic, skill & location details</p>
+    </div>
+
+    <!-- Profile Form -->
+    <form action="/student/profile" method="POST" class="profile-form">
+
+        <!-- FULL NAME -->
+        <label>Full Name</label>
+        <input type="text" name="name" value="{{ student.name }}" required>
+
+        <!-- EMAIL -->
+        <label>Email (cannot be changed)</label>
+        <input type="email" value="{{ student.email }}" disabled class="readonly">
+
+        <!-- COURSE -->
+        <label>Course</label>
+        <input type="text" name="course" placeholder="e.g., B.Com Accounting & Finance"
+               value="{{ student.course or '' }}">
+
+        <!-- SKILLS -->
+        <label>Skills <span class="hint">(comma separated)</span></label>
+        <input type="text" name="skills"
+            placeholder="Excel, GST, Accounting, Financial Analysis"
+            value="{% if student.skills %}{{ student.skills if student.skills is string else student.skills|join(', ') }}{% endif %}">
+
+        <!-- TOOLS -->
+        <label>Tools</label>
+        <input type="text" name="tools"
+               placeholder="Tally, Power BI, MS Excel"
+               value="{{ student.tools or '' }}">
+
+        <!-- LOCATION -->
+        <label>Location</label>
+        <input type="text" name="location"
+               placeholder="Mumbai, Pune, Navi Mumbai, etc."
+               value="{{ student.location or '' }}">
+
+        <button class="primary-btn">Save Changes</button>
+
+    </form>
+</div>
+
+
+
+<style>
+
+.profile-container {
+    max-width: 650px;
+    margin: auto;
+    padding: 25px;
+}
+
+/* Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.profile-header h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+}
+.profile-header p {
+    color: #666;
+    margin-top: -4px;
+}
+
+/* Form Card */
+.profile-form {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+    animation: fadeIn 0.5s ease;
+}
+
+.profile-form label {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+    color: #0a575d;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    background: #fafafa;
+    font-size: 15px;
+    transition: 0.25s;
+}
+
+.profile-form input:focus {
+    border-color: #0a575d;
+    box-shadow: 0 0 0 3px rgba(10, 87, 93, 0.15);
+    outline: none;
+    background: #fff;
+}
+
+/* Readonly Field */
+.readonly {
+    background: #eee !important;
+    cursor: not-allowed;
+}
+
+/* Hint text */
+.hint {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Button */
+.primary-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    background: #0a575d;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.primary-btn:hover {
+    background: #094d53;
+    transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+{% endblock %}

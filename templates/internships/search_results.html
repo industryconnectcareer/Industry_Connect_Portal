@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+/* ---------------- HEADER ------------------ */
+.search-header {
+    padding: 20px 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.search-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0a575d;
+}
+.search-header p {
+    font-size: 15px;
+    color: #444;
+}
+
+/* ---------------- TITLES ------------------ */
+.section-title {
+    margin: 25px 0 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+/* ---------------- CARDS GRID ------------------ */
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+/* ---------------- CARD ------------------ */
+.item-card {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.08);
+    transition: 0.25s;
+    text-decoration: none;
+    color: #222;
+    display: block;
+}
+.item-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.12);
+}
+
+.item-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 6px;
+}
+
+.item-company {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+/* ---------------- BADGES ------------------ */
+.tag {
+    background: #e8f4f4;
+    color: #0a575d;
+    font-size: 11px;
+    padding: 4px 9px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 6px;
+}
+
+.ojt-pill,
+.stipend-pill {
+    background: #ffd369;
+    color: #333;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.meta {
+    font-size: 13px;
+    color: #444;
+    margin-top: 4px;
+}
+
+/* ---------------- NO DATA ------------------ */
+.no-data {
+    color: #888;
+    font-size: 14px;
+    padding: 10px 0;
+    margin-left: 5px;
+}
+</style>
+
+<div class="container" style="max-width: 1100px; padding: 20px;">
+
+    <!-- ================= HEADER ================= -->
+    <div class="search-header">
+        <h2>Search Results</h2>
+        <p>Showing results for: <strong>"{{ query }}"</strong></p>
+    </div>
+
+
+    <!-- ================= INTERNSHIP RESULTS ================= -->
+    <h3 class="section-title">Internships</h3>
+
+    {% if internships %}
+    <div class="item-grid">
+        {% for i in internships %}
+        <a class="item-card" href="{{ url_for('internships.internship_detail', id=i.id) }}">
+
+            <div class="item-title">{{ i.title }}</div>
+
+            <div class="item-company">{{ i.company_name or i.company }}</div>
+
+            <div class="meta">{{ i.mode }} • {{ i.location or 'Location not provided' }}</div>
+
+            {% if i.stipend %}
+                <span class="stipend-pill">Stipend: {{ i.stipend }}</span>
+            {% endif %}
+
+            <!-- Skills -->
+            <div style="margin-top:8px;">
+                {% for s in i.skill_list() %}
+                    <span class="tag">{{ s }}</span>
+                {% endfor %}
+            </div>
+
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="no-data">No internships match this search.</p>
+    {% endif %}
+
+
+
+    <!-- ================= OJT RESULTS ================= -->
+    <h3 class="section-title">OJT Programs</h3>
+
+    {% if ojts %}
+    <div class="item-grid">
+        {% for o in ojts %}
+        <a class="item-card" href="{{ url_for('ojt.ojt_detail', ojt_id=o.id) }}">
+            
+
+            <div class="item-title">{{ o.title }}</div>
+
+            <div class="item-company">{{ o.company }}</div>
+
+            <div class="meta">{{ o.mode }} • {{ o.duration }}</div>
+
+            {% if o.category %}
+                <span class="ojt-pill">{{ o.category }}</span>
+            {% endif %}
+
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="no-data">No OJT programs match this search.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

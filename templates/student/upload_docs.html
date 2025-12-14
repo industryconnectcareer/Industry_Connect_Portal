@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="upload-container">
+
+    <h2 class="page-title">Upload Documents</h2>
+    <p class="sub-text">Upload your academic and resume documents to complete your profile.</p>
+
+    <form action="/student/upload" 
+          method="POST" 
+          enctype="multipart/form-data" 
+          class="upload-form">
+
+        <!-- Resume -->
+        <div class="field-block">
+            <label class="field-label">Resume (PDF)</label>
+            <div class="file-input-box">
+                <span class="file-icon">📄</span>
+                <input type="file" name="resume" accept="application/pdf" required>
+            </div>
+            <p class="hint">Upload a PDF copy (Max 2 MB)</p>
+        </div>
+
+        <!-- Marksheet -->
+        <div class="field-block">
+            <label class="field-label">Marksheet</label>
+            <div class="file-input-box">
+                <span class="file-icon">📘</span>
+                <input type="file" name="marksheet" required>
+            </div>
+            <p class="hint">Supported formats: PDF / JPG / PNG</p>
+        </div>
+
+        <!-- Certifications -->
+        <div class="field-block">
+            <label class="field-label">Certifications</label>
+            <div class="file-input-box">
+                <span class="file-icon">🏅</span>
+                <input type="file" name="certificate">
+            </div>
+            <p class="hint">Optional – add your most relevant certificates</p>
+        </div>
+
+        <button class="primary-btn upload-btn">Upload Files</button>
+
+    </form>
+
+</div>
+
+
+<style>
+/* Container */
+.upload-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Title */
+.page-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #0a575d;
+}
+
+.sub-text {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Form styling */
+.upload-form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* Each field block */
+.field-block {
+    margin-bottom: 20px;
+}
+
+.field-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #0a575d;
+}
+
+/* File input box */
+.file-input-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f4fafa;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    transition: 0.25s;
+}
+
+.file-input-box:hover {
+    border-color: #0a575d;
+    background: #eef7f7;
+}
+
+.file-icon {
+    font-size: 20px;
+}
+
+.file-input-box input[type="file"] {
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+/* Hint text */
+.hint {
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+}
+
+/* Upload button */
+.upload-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+</style>
+
+{% endblock %}

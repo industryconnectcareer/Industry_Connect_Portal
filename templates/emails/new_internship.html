@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background:#f3f6f7; padding:20px;">
+
+<div style="
+    max-width:600px; 
+    margin:auto; 
+    background:#ffffff; 
+    padding:28px; 
+    border-radius:12px; 
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+">
+
+    <!-- HEADER -->
+    <div style="text-align:center; margin-bottom:25px;">
+        <h2 style="color:#0a575d; margin:0; font-size:24px;">
+            New Internship Alert 🎉
+        </h2>
+        <p style="color:#555; margin-top:8px; font-size:14px;">
+            A new opportunity that matches your profile!
+        </p>
+    </div>
+
+    <!-- GREETING -->
+    <p style="font-size:16px; color:#333;">Hello <b>{{ student_name }}</b>,</p>
+
+    <p style="font-size:15px; color:#444; line-height:1.6;">
+        A new internship has been posted that aligns with your skills, interests, and preferences.
+        Here's a quick summary:
+    </p>
+
+    <!-- INTERNSHIP INFO BOX -->
+    <div style="
+        background:#e9f7f6; 
+        padding:18px; 
+        border-radius:10px; 
+        border-left:5px solid #0a575d;
+        margin:20px 0;
+    ">
+        <h3 style="color:#0a575d; margin:0 0 8px 0; font-size:20px;">
+            {{ title }}
+        </h3>
+
+        <p style="margin:5px 0; color:#333;"><b>Company:</b> {{ company }}</p>
+        <p style="margin:5px 0; color:#333;"><b>Category:</b> {{ category }}</p>
+        <p style="margin:5px 0; color:#333;"><b>Location:</b> {{ location }}</p>
+    </div>
+
+    <!-- APPLY BUTTON -->
+    <div style="text-align:center; margin-top:25px;">
+        <a href="{{ apply_link }}" 
+           style="
+                background:#0a575d;
+                color:white;
+                padding:12px 25px;
+                text-decoration:none;
+                font-size:16px;
+                border-radius:8px;
+                display:inline-block;
+                font-weight:600;
+                letter-spacing:0.3px;
+           ">
+           Apply Now
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <p style="margin-top:25px; font-size:14px; color:#666; line-height:1.6;">
+        Stay active and keep your profile updated to get better recommendations!
+        <br><br>
+        Regards,<br>
+        <b style="color:#0a575d;">Industry Connect</b>
+    </p>
+
+    <hr style="margin-top:25px; border:none; border-top:1px solid #e4e4e4;">
+
+    <p style="font-size:12px; color:#999; text-align:center;">
+        This is an automated email. Please do not reply.
+    </p>
+
+</div>
+
+</body>
+</html>

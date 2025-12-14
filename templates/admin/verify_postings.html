@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Table */
+.verify-table {
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.verify-table th {
+    background: #0a575d;
+    color: white;
+    font-size: 15px;
+    padding: 14px;
+}
+
+.verify-table td {
+    padding: 14px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.verify-table tr:hover {
+    background: #f4fbfa;
+}
+
+/* Approve / Reject buttons */
+.btn-approve {
+    background: #0a8a37;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-reject {
+    background: #c62828;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-approve:hover {
+    background: #06752f;
+}
+
+.btn-reject:hover {
+    background: #a82121;
+}
+
+/* Status pill */
+.status-pill {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-pending { background: #fff4d6; color: #d88700; }
+.status-approved { background: #d8f7dd; color: #0a8a37; }
+.status-rejected { background: #ffd9d9; color: #c62828; }
+
+/* Empty state */
+.empty-row {
+    padding: 22px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+</style>
+
+
+<h2 class="page-title">Verify Internship Postings</h2>
+
+<table class="verify-table">
+
+    <tr>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Category</th>
+        <th>Location</th>
+        <th>Stipend</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for p in postings %}
+    <tr>
+        <td>{{ p.title }}</td>
+        <td>{{ p.company }}</td>
+        <td>{{ p.category or "—" }}</td>
+        <td>{{ p.location or "—" }}</td>
+        <td>{{ p.stipend or "Unpaid" }}</td>
+
+        <td>
+            {% if p.status == "Pending" %}
+                <span class="status-pill status-pending">Pending</span>
+            {% elif p.status == "Approved" %}
+                <span class="status-pill status-approved">Approved</span>
+            {% else %}
+                <span class="status-pill status-rejected">Rejected</span>
+            {% endif %}
+        </td>
+
+        <td>
+            <form method="POST" action="/admin/posting/{{ p.id }}/approve" style="display:inline;">
+                <button class="btn-approve">Approve</button>
+            </form>
+
+            <form method="POST" action="/admin/posting/{{ p.id }}/reject" style="display:inline;">
+                <button class="btn-reject">Reject</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+
+    {% if postings|length == 0 %}
+    <tr>
+        <td colspan="7" class="empty-row">
+            🚀 No internship postings awaiting verification
+        </td>
+    </tr>
+    {% endif %}
+
+</table>
+
+{% endblock %}

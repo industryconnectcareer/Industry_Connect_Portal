@@ -1,0 +1,28 @@
+<!-- FILE: employer_auto_rejection.html -->
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial;background:#f4f6f7;padding:20px;">
+
+<div style="max-width:600px;background:white;margin:auto;padding:25px;border-radius:12px;">
+    <h2 style="color:#c62828;">Posting Rejected Automatically 🚫</h2>
+
+    <p>Hello {{ employer_name }},</p>
+
+    <p>Your internship posting has been automatically rejected due to the following:</p>
+
+    <div style="background:#ffe6e6;padding:14px;border-radius:8px;">
+        {{ reason }}
+    </div>
+
+    <p>Please update the posting and resubmit for approval.</p>
+
+    <a href="{{ edit_link }}" style="background:#006d66;color:white;
+       padding:10px 20px;border-radius:6px;text-decoration:none;">
+       Edit Posting
+    </a>
+
+    <p style="margin-top:20px;">Regards,<br><b>Industry Connect Compliance Team</b></p>
+</div>
+
+</body>
+</html>

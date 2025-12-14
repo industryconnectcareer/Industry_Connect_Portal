@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+/* ---------- HEADER ---------- */
+.career-header {
+    text-align: center;
+    padding: 35px 15px;
+}
+
+.career-header h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: #0a575d;
+    margin-bottom: 6px;
+}
+
+.career-header .sub {
+    color: #666;
+    font-size: 16px;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* ---------- SECTION BOX ---------- */
+.section-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    margin: 25px auto;
+    max-width: 900px;
+}
+
+/* ---------- SKILL LIST ---------- */
+.skill-gap-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+}
+
+.skill-gap-list li {
+    background: #e7f6f5;
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 6px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #0a575d;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.skill-gap-list li:hover {
+    background: #0a575d;
+    color: #fff;
+}
+
+/* ---------- ROADMAP ---------- */
+.roadmap-step {
+    background: #f9fbfb;
+    border-left: 5px solid #0a575d;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
+    transition: 0.25s ease;
+}
+
+.roadmap-step:hover {
+    transform: translateX(6px);
+}
+
+/* ---------- GRID FOR INTERNSHIPS / OJT ---------- */
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 15px;
+}
+
+/* ---------- ROLE CARD ---------- */
+.role-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #e5f3f2;
+    transition: 0.25s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.12);
+}
+
+.role-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.role-company {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* ---------- SKILL TAG ---------- */
+.role-tag {
+    display: inline-block;
+    background: #edf8f7;
+    color: #0a575d;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 3px;
+}
+
+</style>
+
+
+<!-- HEADER -->
+<div class="career-header">
+    <h2>{{ stream.name }}</h2>
+    <p class="sub">{{ stream.description }}</p>
+</div>
+
+
+<!-- SKILLS REQUIRED -->
+<div class="section-box">
+    <h3>Skills Required</h3>
+    <ul class="skill-gap-list">
+        {% for s in stream.skills %}
+        <li>{{ s }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+<!-- CAREER ROADMAP -->
+<div class="section-box">
+    <h3>Career Roadmap</h3>
+
+    {% for step in stream.roadmap %}
+    <div class="roadmap-step">
+        <b>{{ loop.index }}.</b> {{ step }}
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- INTERNSHIPS SECTION -->
+<div class="section-box">
+    <h3>Internships in {{ stream.name }}</h3>
+
+    <div class="role-grid">
+        {% for job in stream.internships %}
+        <div class="role-card">
+            <div class="role-title">{{ job.title }}</div>
+            <div class="role-company">{{ job.company }}</div>
+
+            {% for skill in job.skills %}
+            <span class="role-tag">{{ skill }}</span>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- OJT SECTION -->
+<div class="section-box">
+    <h3>Recommended OJT Programs</h3>
+
+    <div class="role-grid">
+        {% for ojt in stream.ojt %}
+        <div class="role-card">
+            <div class="role-title">{{ ojt.name }}</div>
+            <div class="role-company">{{ ojt.duration }} • {{ ojt.mode }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

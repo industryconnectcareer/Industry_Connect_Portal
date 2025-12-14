@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #0a575d;
+}
+
+.application-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.application-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.25s;
+}
+
+.application-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.app-info {
+    width: 70%;
+}
+
+.app-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.app-course {
+    font-size: 14px;
+    color: #666;
+    margin-top: 3px;
+}
+
+.app-internship {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 14px;
+}
+
+.status-applied {
+    background: #e6f5f4;
+    color: #0a575d;
+}
+
+.status-shortlisted {
+    background: #d4f6d9;
+    color: #1b7d2c;
+}
+
+.status-rejected {
+    background: #ffe1e1;
+    color: #b71c1c;
+}
+
+.resume-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #ffd369;
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: #333;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.resume-btn:hover {
+    background: #ffca47;
+}
+
+.app-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shortlist-btn, .reject-btn {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.shortlist-btn {
+    background: #0a575d;
+    color: white;
+}
+
+.shortlist-btn:hover {
+    background: #094c51;
+}
+
+.reject-btn {
+    background: #ff6b6b;
+    color: white;
+}
+
+.reject-btn:hover {
+    background: #e85b5b;
+}
+
+.empty-state {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+}
+
+</style>
+
+
+<h2 class="page-title">Applications Review</h2>
+
+<div class="application-list">
+
+    {% for a in applications %}
+    <div class="application-card">
+
+        <!-- Applicant Info -->
+        <div class="app-info">
+
+            <div class="app-name">{{ a.applicant.name }}</div>
+
+            <div class="app-course">
+                {{ a.applicant.course or "Course not provided" }}
+            </div>
+
+            <div class="app-internship">
+                Applied for: <b>{{ a.internship.title }}</b>
+            </div>
+
+            <!-- Status Badge -->
+            {% if a.status == "Applied" %}
+            <span class="status-badge status-applied">Applied</span>
+            {% elif a.status == "Shortlisted" %}
+            <span class="status-badge status-shortlisted">Shortlisted</span>
+            {% else %}
+            <span class="status-badge status-rejected">Rejected</span>
+            {% endif %}
+
+            <!-- Resume -->
+            {% if a.resume_path %}
+            <a href="{{ url_for('static', filename='resumes/' ~ a.resume_path) }}"
+               target="_blank" 
+               class="resume-btn">
+               View Resume
+            </a>
+            {% endif %}
+
+        </div>
+
+        <!-- Actions -->
+        <div class="app-actions">
+
+            <form method="POST"
+                  action="{{ url_for('employer.shortlist_application', id=a.id) }}">
+                <button class="shortlist-btn" title="Mark candidate as shortlisted">
+                    Shortlist
+                </button>
+            </form>
+
+            <form method="POST"
+                  action="{{ url_for('employer.reject_application', id=a.id) }}">
+                <button class="reject-btn" title="Reject candidate">
+                    Reject
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+    {% if applications|length == 0 %}
+    <div class="empty-state">
+        No applications yet. Candidates will appear here when they apply.
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

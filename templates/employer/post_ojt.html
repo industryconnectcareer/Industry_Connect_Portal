@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .post-container {
+        max-width: 780px;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0px 4px 14px rgba(0,0,0,0.1);
+        margin-top: 25px;
+    }
+
+    .page-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #0a575d;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .post-form label {
+        font-weight: 600;
+        margin-top: 14px;
+        display: block;
+        color: #0a575d;
+    }
+
+    .post-form input,
+    .post-form select,
+    .post-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #dcdcdc;
+        font-size: 14px;
+    }
+
+    .primary-btn {
+        width: 100%;
+        padding: 12px;
+        background: #0a575d;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .primary-btn:hover {
+        background: #094d53;
+    }
+
+    small {
+        color: #666;
+        font-size: 13px;
+    }
+</style>
+
+
+<div class="post-container">
+
+    <h2 class="page-title">Post New OJT Program</h2>
+
+    <form action="{{ url_for('employer.post_ojt') }}" method="POST" class="post-form">
+
+        <!-- OJT Title -->
+        <label>OJT Program Title</label>
+        <input type="text" name="title" required placeholder="e.g., Finance OJT Program">
+
+        <!-- Company -->
+        <label>Conducted By (Company Name)</label>
+        <input type="text" name="company" required placeholder="e.g., ABC Pvt Ltd">
+
+        <!-- Duration -->
+        <label>Duration</label>
+        <input type="text" name="duration" required placeholder="e.g., 1 Month, 6 Weeks">
+
+        <!-- Mode -->
+        <label>Mode</label>
+        <select name="mode" required>
+            <option>On-site</option>
+            <option>Hybrid</option>
+            <option>Remote</option>
+        </select>
+
+        <!-- Category -->
+        <label>Category</label>
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option>Accounting</option>
+            <option>Finance</option>
+            <option>Taxation</option>
+            <option>Auditing</option>
+            <option>Banking</option>
+            <option>Investment Research</option>
+            <option>Equity Research</option>
+            <option>Financial Modeling</option>
+            <option>Risk Management</option>
+            <option>Insurance</option>
+            <option>Wealth Management</option>
+
+            <!-- Business & Operations -->
+            <option>Business Administration</option>
+            <option>Business Analytics</option>
+            <option>Operations</option>
+            <option>Logistics</option>
+            <option>Supply Chain</option>
+            <option>Compliance</option>
+            <option>Procurement</option>
+            <option>Back Office</option>
+            <option>Data Entry</option>
+
+            <!-- HR & People Management -->
+            <option>HR</option>
+            <option>Recruitment</option>
+            <option>Training & Development</option>
+            <option>Employee Relations</option>
+
+            <!-- Marketing & Sales -->
+            <option>Marketing</option>
+            <option>Digital Marketing</option>
+            <option>Social Media</option>
+            <option>SEO / SEM</option>
+            <option>Content Writing</option>
+            <option>Sales</option>
+            <option>Business Development</option>
+            <option>Customer Relationship Management</option>
+
+            <!-- Technology-Assisted Roles (Commerce-friendly) -->
+            <option>MS Excel & Reporting</option>
+            <option>Tally / ERP</option>
+            <option>Power BI Reporting</option>
+            <option>CRM Operations</option>
+
+            <!-- Creative / Support -->
+            <option>Graphic Design</option>
+            <option>Admin Support</option>
+            <option>Front Desk / Office Assistant</option>
+
+            <!-- Entrepreneurship & Misc -->
+            <option>Entrepreneurship</option>
+            <option>Start-up Operations</option>
+        </select>
+
+        <!-- Stipend -->
+        <label>Stipend</label>
+        <input type="text" name="stipend" placeholder="₹3000/month or Unpaid">
+
+        <!-- Description -->
+        <label>Program Description</label>
+        <textarea name="description" rows="4" placeholder="Overview of OJT program, learning outcomes..."></textarea>
+
+        <!-- Modules (JSON or line separated) -->
+        <label>Modules Covered</label>
+        <textarea name="modules" rows="4"
+                  placeholder='Example:
+Basics of Accounting
+GST Filing
+Excel Reporting
+Tally Operations'></textarea>
+        <small>Enter one module per line. System will convert it to JSON automatically.</small>
+
+        <!-- Eligibility -->
+        <label>Eligibility</label>
+        <textarea name="eligibility" rows="3"
+                  placeholder="B.Com / M.Com Students, Basic Excel Knowledge..."></textarea>
+
+        <!-- Submit -->
+        <button type="submit" class="primary-btn">Submit OJT Program</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

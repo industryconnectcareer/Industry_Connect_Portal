@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="mock-container">
+
+    <!-- Page Heading -->
+    <h2 class="page-title">Mock Interview Practice</h2>
+    <p class="sub-title">Answer interview-style questions and get AI-powered feedback</p>
+
+    <div class="mock-box">
+
+        <!-- Question -->
+        <div class="question-card">
+            <div class="q-icon">❓</div>
+            <div class="q-text">{{ question }}</div>
+        </div>
+
+        <!-- Answer Form -->
+        <form action="/student/mock" method="POST" class="answer-form">
+            <label>Your Answer</label>
+            <textarea 
+                name="answer" 
+                placeholder="Type your answer in detail... (Structure: Introduction → Experience → Example → Conclusion)"
+                required
+            ></textarea>
+
+            <button class="primary-btn">Submit Answer</button>
+        </form>
+
+
+        <!-- Feedback -->
+        {% if feedback %}
+        <div class="feedback-card fade-in">
+            <h3>📝 Feedback</h3>
+            <p>{{ feedback }}</p>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+
+<style>
+
+.mock-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 25px;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    text-align: center;
+}
+.sub-title {
+    text-align: center;
+    color: #666;
+    margin-top: -6px;
+    margin-bottom: 25px;
+}
+
+/* Mock Box */
+.mock-box {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* Question Card */
+.question-card {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: #f4fbfb;
+    border-radius: 14px;
+    border-left: 5px solid #0a575d;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.q-icon {
+    font-size: 28px;
+    color: #0a575d;
+    flex-shrink: 0;
+}
+
+.q-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0a575d;
+    line-height: 1.4;
+}
+
+/* Answer Form */
+.answer-form label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    margin-top: 10px;
+}
+
+.answer-form textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    resize: vertical;
+    min-height: 130px;
+    margin-bottom: 18px;
+    transition: 0.2s;
+}
+
+.answer-form textarea:focus {
+    border-color: #0a575d;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(10, 87, 93, 0.15);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 14px;
+    background: #0a575d;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.primary-btn:hover {
+    background: #094d53;
+    transform: translateY(-2px);
+}
+
+/* Feedback Card */
+.feedback-card {
+    margin-top: 25px;
+    background: #e8fff1;
+    border-left: 5px solid #1b9c3b;
+    padding: 18px;
+    border-radius: 12px;
+    animation: fadeIn 0.5s ease;
+}
+.feedback-card h3 {
+    margin-bottom: 8px;
+    color: #1b9c3b;
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+{% endblock %}

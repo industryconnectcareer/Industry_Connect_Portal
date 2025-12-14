@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="emp-dashboard">
+
+    <!-- PAGE TITLE -->
+    <h2 class="page-title">Employer Dashboard</h2>
+
+    <!-- KPI CARDS -->
+    <div class="kpi-grid">
+
+        <div class="kpi-card">
+            <div class="kpi-icon">📌</div>
+            <div class="kpi-value">{{ total_postings }}</div>
+            <div class="kpi-label">Total Postings</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-icon">📥</div>
+            <div class="kpi-value">{{ total_applications }}</div>
+            <div class="kpi-label">Applications Received</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-icon">⭐</div>
+            <div class="kpi-value">{{ shortlisted }}</div>
+            <div class="kpi-label">Shortlisted Candidates</div>
+        </div>
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+    <h3 class="section-title">Quick Actions</h3>
+
+    <div class="action-grid">
+
+        <a class="action-card" href="{{ url_for('employer.post_internship') }}">
+            <div class="action-icon">➕</div>
+            <h4>Post Internship</h4>
+            <p>Create and publish a new internship.</p>
+        </a>
+
+        <a class="action-card" href="{{ url_for('employer.view_postings') }}">
+            <div class="action-icon">📄</div>
+            <h4>View My Postings</h4>
+            <p>Manage active & past internship postings.</p>
+        </a>
+
+        <a class="action-card" href="{{ url_for('employer.applications_review') }}">
+            <div class="action-icon">👥</div>
+            <h4>Applications Review</h4>
+            <p>Shortlist or reject applications.</p>
+        </a>
+
+        <a class="action-card" href="{{ url_for('employer.company_profile') }}">
+            <div class="action-icon">🏢</div>
+            <h4>Company Profile</h4>
+            <p>Update company info & verification documents.</p>
+        </a>
+
+        <a class="action-card" href="{{ url_for('employer.post_ojt') }}">
+            <div class="action-icon">🎓</div>
+            <h4>Post OJT Program</h4>
+            <p>Create On-The-Job Training programs.</p>
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- STYLE SHEET -->
+<style>
+.emp-dashboard {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 22px;
+}
+
+/* Title */
+.page-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0a575d;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+/* KPI GRID */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    margin-bottom: 45px;
+}
+
+.kpi-card {
+    background: #ffffff;
+    padding: 32px 25px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: all 0.25s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.12);
+}
+
+.kpi-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.kpi-value {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0a575d;
+}
+
+.kpi-label {
+    font-size: 16px;
+    color: #555;
+    font-weight: 600;
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+}
+
+/* SECTION TITLE */
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 18px;
+    text-align: left;
+    padding-left: 4px;
+}
+
+/* ACTION CARDS */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+}
+
+.action-card {
+    background: #ffffff;
+    padding: 28px 22px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.12);
+}
+
+.action-icon {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.action-card h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0a575d;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.action-card p {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;
+}
+</style>
+
+{% endblock %}

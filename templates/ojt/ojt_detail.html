@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="{{ url_for('ojt.ojt_list') }}" class="back-link">← Back to OJTs</a>
+
+<div class="detail-grid">
+
+    <!-- ================= LEFT COLUMN ================= -->
+    <div class="left-column">
+
+        <!-- HEADER CARD -->
+        <div class="card header-card">
+            <h2 class="title">{{ program.title }}</h2>
+            <p class="company">{{ program.company_name }}</p>
+
+            {% if program.stipend %}
+            <span class="stipend-badge">
+                💰 {{ program.stipend }}
+            </span>
+            {% endif %}
+
+            <!-- SKILL TAGS -->
+            {% if program.skills %}
+            <div class="skill-tags">
+                {% for s in program.skills.split(";") %}
+                    <span class="tag">{{ s.strip() }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- INTERNSHIP OVERVIEW -->
+        <div class="card">
+            <h3>📌 Internship Overview</h3>
+            <ul class="meta-list">
+                <li><b>Location:</b> {{ program.location or "Not specified" }}</li>
+                <li><b>Mode:</b> {{ program.mode or "Not specified" }}</li>
+                <li><b>Category:</b> {{ program.category or "None" }}</li>
+                <li><b>Duration:</b> {{ program.duration or "Not specified" }}</li>
+            </ul>
+        </div>
+
+        <!-- REQUIRED SKILLS -->
+        <div class="card">
+            <h3>🧩 Required Skills</h3>
+            {% if program.skills %}
+            <ul>
+                {% for s in program.skills.split(";") %}
+                <li>{{ s.strip() }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No skills specified.</p>
+            {% endif %}
+        </div>
+
+        <!-- RESPONSIBILITIES -->
+        <div class="card">
+            <h3>📝 Responsibilities</h3>
+            {% if program.responsibilities %}
+            <ul>
+                {% for r in program.responsibilities.split(";") %}
+                <li>{{ r.strip() }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No responsibilities mentioned.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- ================= RIGHT COLUMN ================= -->
+    <div class="right-column">
+
+        <!-- QUICK SUMMARY -->
+        <div class="card summary-card">
+            <h3>Quick Summary</h3>
+
+            <div class="summary-row">
+                <span class="summary-left">📍 Location</span>
+                <span class="summary-right">{{ program.location or "Not specified" }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-left">📂 Category</span>
+                <span class="summary-right">{{ program.category or "None" }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-left">🖥 Mode</span>
+                <span class="summary-right">{{ program.mode or "Not specified" }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-left">💰 Stipend</span>
+                <span class="summary-right">{{ program.stipend or "Unpaid" }}</span>
+            </div>
+
+            {% if is_enrolled %}
+                <div class="btn-disabled">✔ Enrolled</div>
+            {% else %}
+                <form action="{{ url_for('ojt.ojt_enroll', ojt_id=program.id) }}" method="post">
+                    <button class="btn-primary">Apply Now →</button>
+                </form>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================= STYLES ======================= -->
+<style>
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.back-link {
+    color: #0a575d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+}
+
+.header-card .title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.company {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.stipend-badge {
+    background: #ffe08a;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.skill-tags {
+    margin-top: 10px;
+}
+.tag {
+    display: inline-block;
+    background: #0a575d;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    margin: 4px 4px 0 0;
+}
+
+.meta-list {
+    list-style: none;
+    padding: 0;
+}
+.meta-list li {
+    margin-bottom: 6px;
+}
+
+.summary-card h3 {
+    margin-bottom: 18px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-left {
+    color: #555;
+    font-weight: 500;
+}
+
+.summary-right {
+    font-weight: 600;
+    color: #222;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #0a575d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.btn-disabled {
+    background: #ccc;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 16px;
+}
+
+@media(max-width: 900px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+{% endblock %}

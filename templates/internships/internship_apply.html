@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="apply-wrapper">
+
+    <!-- Back Navigation -->
+    <a href="{{ url_for('internships.internship_detail', id=internship.id) }}" class="back-btn">
+        ← Back to Internship
+    </a>
+
+    <div class="apply-header">
+        <h2>Apply for {{ internship.title }}</h2>
+        <p class="company-name">{{ internship.company_name or internship.company }}</p>
+    </div>
+
+    <div class="apply-content">
+
+        <!-- LEFT: APPLICATION FORM -->
+        <div class="apply-form-card">
+
+            <form action="{{ url_for('internships.internship_apply', id=internship.id) }}"
+                  method="POST" enctype="multipart/form-data">
+
+                <!-- Resume Upload -->
+                <label class="label-title">Upload Resume <span class="req">*</span></label>
+                <input 
+                    type="file" 
+                    name="resume" 
+                    accept="application/pdf" 
+                    class="input-field"
+                    required
+                >
+                <p class="hint">Only PDF file allowed</p>
+
+                <!-- Cover Letter -->
+                <label class="label-title">Cover Letter (Optional)</label>
+                <textarea 
+                    name="cover_letter" 
+                    rows="7" 
+                    class="textarea-field"
+                    placeholder="Write a compelling cover letter highlighting why you're the right fit..."
+                    oninput="updateCount()"
+                ></textarea>
+
+                <div class="char-count" id="charCount">0 / 1500</div>
+
+                <button class="submit-btn">Submit Application</button>
+            </form>
+
+        </div>
+
+        <!-- RIGHT: INTERNSHIP META INFO -->
+        <div class="info-card">
+
+            <h3 class="info-title">Internship Summary</h3>
+
+            <div class="info-item">
+                <span>Category:</span> <b>{{ internship.category or "Not specified" }}</b>
+            </div>
+
+            <div class="info-item">
+                <span>Mode:</span> <b>{{ internship.mode or "Not specified" }}</b>
+            </div>
+
+            <div class="info-item">
+                <span>Location:</span> <b>{{ internship.location or "Not specified" }}</b>
+            </div>
+
+            <div class="info-item">
+                <span>Stipend:</span> <b>{{ internship.stipend or "Not provided" }}</b>
+            </div>
+
+            {% if internship.skills %}
+            <div class="info-skills">
+                <span>Skills Required:</span>
+                <div class="skill-tags">
+                    {% for s in internship.skills.split(",") %}
+                    <span class="skill-tag">{{ s.strip() }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== STYLES ===================== -->
+<style>
+.apply-wrapper {
+    max-width: 1150px;
+    margin: auto;
+    padding: 25px;
+}
+
+.back-btn {
+    color: #0a575d;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.apply-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.company-name {
+    color: #555;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.apply-content {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.apply-form-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
+}
+
+.label-title {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+}
+
+.input-field, .textarea-field {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid #d0d0d0;
+    font-size: 15px;
+}
+
+.hint {
+    font-size: 12px;
+    margin-top: -10px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.char-count {
+    font-size: 12px;
+    text-align: right;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0a575d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #094d53;
+}
+
+
+/* INFO CARD (RIGHT SIDE) */
+.info-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
+    height: fit-content;
+}
+
+.info-title {
+    font-size: 20px;
+    color: #0a575d;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+.info-item span {
+    color: #777;
+}
+
+.info-skills {
+    margin-top: 15px;
+}
+
+.skill-tags {
+    margin-top: 6px;
+}
+
+.skill-tag {
+    display: inline-block;
+    background: #e6f4f3;
+    color: #0a575d;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin: 3px 4px 0 0;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .apply-content {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+function updateCount() {
+    const text = document.querySelector("textarea[name='cover_letter']").value;
+    document.getElementById("charCount").innerText = `${text.length} / 1500`;
+}
+</script>
+
+{% endblock %}

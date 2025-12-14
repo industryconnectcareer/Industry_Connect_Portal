@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Company Verification Panel</h2>
+
+<div class="verification-wrapper">
+
+    {% if companies %}
+    <table class="admin-table enhanced-table">
+
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Business Email</th>
+                <th>Email Verified?</th>
+                <th>Status</th>
+                <th>Proof Document</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for c in companies %}
+            <tr>
+
+                <!-- Company Name -->
+                <td>
+                    <strong>{{ c.company_name }}</strong><br>
+                    <small>ID: {{ c.id }}</small>
+                </td>
+
+                <!-- Business Email -->
+                <td>{{ c.business_email or "Not Provided" }}</td>
+
+                <!-- Email Verified Badge -->
+                <td>
+                    {% if c.email_verified %}
+                        <span class="badge verified">✔ Verified</span>
+                    {% else %}
+                        <span class="badge not-verified">✘ Not Verified</span>
+                    {% endif %}
+                </td>
+
+                <!-- Company Verification Status -->
+                <td>
+                    {% if c.status == "Approved" %}
+                        <span class="status approved">Approved</span>
+                    {% elif c.status == "Rejected" %}
+                        <span class="status rejected">Rejected</span>
+                    {% else %}
+                        <span class="status pending">Pending</span>
+                    {% endif %}
+                </td>
+
+                <!-- Proof Document -->
+                <td>
+                    {% if c.proof_document %}
+                        <a href="{{ c.proof_document }}" target="_blank" class="doc-link">
+                            📄 View Document
+                        </a>
+                    {% else %}
+                        <span class="missing-doc">No Document</span>
+                    {% endif %}
+                </td>
+
+                <!-- Action Buttons -->
+                <td class="action-buttons">
+
+                    <!-- Approve -->
+                    <form method="POST"
+                          action="{{ url_for('admin.approve_company', company_id=c.id) }}"
+                          onsubmit="return confirm('Approve this company?');">
+                        <button class="btn btn-approve">Approve</button>
+                    </form>
+
+                    <!-- Reject -->
+                    <form method="POST"
+                          action="{{ url_for('admin.reject_company', company_id=c.id) }}"
+                          onsubmit="return confirm('Reject this company?');">
+                        <button class="btn btn-reject">Reject</button>
+                    </form>
+
+                </td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+    {% else %}
+        <p class="empty-message">🎉 No pending company verification requests.</p>
+    {% endif %}
+
+</div>
+
+<style>
+/* Table */
+.enhanced-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.enhanced-table th {
+    background: #f5f7fa;
+    padding: 12px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid #e2e6ea;
+}
+
+.enhanced-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e6ea;
+}
+
+/* Status Badges */
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    color: white;
+}
+.status.approved { background: #28a745; }
+.status.pending { background: #ffc107; color: #333; }
+.status.rejected { background: #dc3545; }
+
+/* Email Verification Badge */
+.badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.badge.verified { background: #28a745; color: white; }
+.badge.not-verified { background: #dc3545; color: white; }
+
+/* Buttons */
+.btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.btn-approve { background: #28a745; color: white; }
+.btn-reject { background: #dc3545; color: white; }
+
+.action-buttons form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Document link */
+.doc-link {
+    color: #007bff;
+    font-weight: 500;
+    text-decoration: none;
+}
+.doc-link:hover {
+    text-decoration: underline;
+}
+
+.missing-doc {
+    color: #888;
+    font-size: 12px;
+}
+
+/* Empty message */
+.empty-message {
+    margin-top: 25px;
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+}
+</style>
+
+{% endblock %}

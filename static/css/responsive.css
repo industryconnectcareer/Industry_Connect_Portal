@@ -1,0 +1,115 @@
+/* =========================================
+   responsive.css - Mobile Overrides
+========================================= */
+
+@media (max-width: 1200px) {
+    main {
+        padding: 0 12px;
+    }
+}
+
+/* ---------- Medium Screens ---------- */
+@media (max-width: 900px) {
+
+    /* Nav */
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Student / Employer Dashboard */
+    .student-dashboard,
+    .employer-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    /* Admin Cards */
+    .admin-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .career-header h2 {
+        font-size: 24px;
+    }
+}
+
+/* ---------- Small Screens ---------- */
+@media (max-width: 650px) {
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    /* Search box stacked */
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    /* Internships */
+    .internship-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Career */
+    .role-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stream-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Tables scroll horizontally */
+    .table,
+    .verify-table,
+    .application-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+        padding: 30px 18px;
+    }
+
+    /* Buttons */
+    .btn,
+    .apply-btn,
+    .enroll-btn,
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ---------- Extra Small Screens ---------- */
+@media (max-width: 450px) {
+
+    .score-circle {
+        width: 110px;
+        height: 110px;
+        font-size: 24px;
+    }
+
+    .badge-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .ojt-card {
+        padding: 16px;
+    }
+
+    .career-header p {
+        font-size: 13px;
+    }
+}

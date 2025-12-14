@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background:#f4f6f7; padding:20px;">
+
+<div style="
+    max-width:600px;
+    margin:auto;
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+">
+
+    <!-- Header -->
+    <h2 style="color:#006d66; margin-top:0; font-size:26px;">
+        🎉 Congratulations — You're Selected!
+    </h2>
+
+    <!-- Greeting -->
+    <p style="font-size:16px; color:#333;">
+        Hello <b>{{ student_name }}</b>,
+    </p>
+
+    <!-- Body -->
+    <p style="font-size:15px; color:#444; line-height:1.6;">
+        We are excited to inform you that you have been <b style="color:#0a6b61;">selected</b> for the internship role:
+    </p>
+
+    <h3 style="color:#004c46; font-size:20px; margin:10px 0 18px 0;">
+        {{ title }} — {{ company }}
+    </h3>
+
+    <!-- Success Message Box -->
+    <div style="
+        background:#e8f6f5;
+        padding:15px;
+        border-left:5px solid #0a575d;
+        border-radius:10px;
+        margin-bottom:20px;
+        font-size:15px;
+        color:#444;
+        line-height:1.6;
+    ">
+        The employer will contact you soon with onboarding instructions, next steps,  
+        and official documents (if applicable).
+        <br><br>
+        Please keep checking your email and student dashboard for updates.
+    </div>
+
+    <!-- CTA Button -->
+    <div style="text-align:center; margin-top:15px;">
+        <a href="{{ dashboard_link }}"
+           style="
+                background:#0a575d;
+                color:#ffffff;
+                padding:12px 24px;
+                text-decoration:none;
+                border-radius:8px;
+                font-size:16px;
+                font-weight:600;
+                display:inline-block;
+            ">
+            Go to Dashboard
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <p style="margin-top:25px; font-size:15px; color:#555;">
+        Once again, congratulations on this achievement! 🌟  
+        Wishing you a successful and enriching internship experience.
+    </p>
+
+    <p style="font-size:14px; margin-top:10px; color:#666;">
+        Regards,<br>
+        <b style="color:#006d66;">Industry Connect</b>
+    </p>
+
+    <hr style="border:none; border-top:1px solid #e3e3e3; margin-top:25px;">
+    <p style="font-size:12px; color:#999; text-align:center;">
+        This is an automated email. Do not reply.
+    </p>
+
+</div>
+
+</body>
+</html>

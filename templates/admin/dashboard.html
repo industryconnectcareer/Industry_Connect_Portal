@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+/* ======== CONTAINER ======== */
+.admin-container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+/* ======== TITLE ======== */
+.admin-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #0a575d;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* ======== STATS GRID ======== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.25s ease;
+    border-top: 5px solid #0a575d;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    color: #0a575d;
+}
+
+.stat-number {
+    font-size: 38px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.stat-label {
+    margin-top: 6px;
+    font-size: 15px;
+    color: #555;
+}
+
+/* ======== LINK SECTION ======== */
+.links-section {
+    margin-top: 35px;
+}
+
+.pending-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #0a575d;
+}
+
+.pending-list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    background: #f2f8f7;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #0a575d;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transition: 0.2s;
+}
+
+.pending-list a:hover {
+    background: #d9efec;
+    padding-left: 18px;
+}
+
+.pending-list a i {
+    font-size: 18px;
+}
+
+/* ======== BACK BUTTON ======== */
+.back-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 20px;
+    background: #0a575d;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: #094c51;
+    transform: translateX(-3px);
+}
+
+</style>
+
+<div class="admin-container">
+
+    <div class="admin-title">Admin Dashboard</div>
+
+    <!-- ====================================
+         STATS CARDS
+    ==================================== -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">👨‍🎓</div>
+            <div class="stat-number">{{ total_students }}</div>
+            <div class="stat-label">Total Students</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏢</div>
+            <div class="stat-number">{{ total_employers }}</div>
+            <div class="stat-label">Registered Employers</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-number">{{ total_internships }}</div>
+            <div class="stat-label">Total Internships Posted</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-number">{{ pending_employers }}</div>
+            <div class="stat-label">Pending Employer Approvals</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🔍</div>
+            <div class="stat-number">{{ pending_postings }}</div>
+            <div class="stat-label">Pending Internship Postings</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏫</div>
+            <div class="stat-number">{{ total_colleges }}</div>
+            <div class="stat-label">Registered Colleges</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-number">{{ pending_colleges }}</div>
+            <div class="stat-label">Pending College Approvals</div>
+        </div>
+
+    </div>
+
+    <!-- ====================================
+         MANAGEMENT LINKS
+    ==================================== -->
+    <div class="links-section">
+
+        <div class="pending-title">Manage Approvals & Reports</div>
+
+        <div class="pending-list">
+            <a href="{{ url_for('admin.pending_companies') }}">
+                <i>📌</i> Review Pending Employers
+            </a>
+
+            <a href="{{ url_for('admin.pending_colleges') }}">
+                </i> 🏫 Review Pending Colleges
+            </a>
+
+            <a href="{{ url_for('admin.verify_postings') }}">
+                <i>📂</i> Review Pending Internship Postings
+            </a>
+
+            <a href="{{ url_for('analytics.analytics_dashboard') }}">
+                <i>📊</i> View Analytics Dashboard
+            </a>
+        </div>
+
+    </div>
+
+    <!-- BACK TO HOME -->
+    <a href="{{ url_for('public.home') }}" class="back-btn">← Back to Home</a>
+
+</div>
+
+{% endblock %}

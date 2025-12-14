@@ -1,0 +1,31 @@
+<!-- FILE: admin_weekly_summary.html -->
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial;background:#f4f6f7;padding:20px;">
+
+<div style="max-width:600px;background:white;padding:25px;margin:auto;border-radius:12px;">
+    <h2 style="color:#006d66;">Weekly Platform Summary 📊</h2>
+
+    <p>Hello Admin,</p>
+
+    <h3 style="color:#004c46;">📌 New Registrations</h3>
+    {{ new_users | safe }}
+
+    <h3 style="color:#004c46;margin-top:20px;">📌 Internships Posted</h3>
+    {{ new_internships | safe }}
+
+    <h3 style="color:#004c46;margin-top:20px;">📌 System Alerts</h3>
+    {{ alerts | safe }}
+
+    <div style="text-align:center;margin-top:25px;">
+        <a href="{{ admin_link }}" style="background:#006d66;color:white;
+           padding:12px 24px;border-radius:8px;text-decoration:none;">
+           Open Admin Dashboard
+        </a>
+    </div>
+
+    <p style="margin-top:20px;">Regards,<br><b>Industry Connect System Bot</b></p>
+</div>
+
+</body>
+</html>

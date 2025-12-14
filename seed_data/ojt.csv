@@ -1,0 +1,89 @@
+title,company_id,title,mode,location,required_skills,duration,stipend,responsibilities
+OJT Program 1,47,Marketing OJT,On-site,Mumbai,Digital Marketing; SEO; Content Writing,1 Month,3000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 2,3,Accounting OJT,Remote,Mumbai,Tally; Excel; GST Basics,2 Months,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 3,24,Business Analytics OJT,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,6 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 4,19,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,6 Months,3000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 5,12,HR OJT,Hybrid,Mumbai,Recruitment; Communication; MS Office,1 Month,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 6,29,Supply Chain OJT,Hybrid,Mumbai,Inventory Management; Excel; Logistics,2 Months,"8,000",Track inventory; Coordinate vendors; Optimize supply
+OJT Program 7,33,HR OJT,Remote,Mumbai,Recruitment; Communication; MS Office,2 Months,8000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 8,14,Finance OJT,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,2 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 9,31,Investment Research OJT,Remote,Mumbai,Equity Research; Valuation; Financial Modeling,1 Month,Unpaid,Research stocks; Build valuation models; Prepare reports
+OJT Program 10,38,Finance OJT,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,8000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 11,34,Business Analytics OJT,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,3000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 12,33,Finance OJT,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,5000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 13,42,Banking Operations OJT,Remote,Mumbai,Banking Operations; Customer Handling,3 Months,10000 / month,Assist branch operations; Handle documentation
+OJT Program 14,6,Business Analytics OJT,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,Unpaid,Clean data; Create dashboards; Analyze trends
+OJT Program 15,35,Banking Operations OJT,Hybrid,Mumbai,Banking Operations; Customer Handling,1 Month,8000 / month,Assist branch operations; Handle documentation
+OJT Program 16,25,HR OJT,Remote,Mumbai,Recruitment; Communication; MS Office,1 Month,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 17,33,Banking Operations OJT,Hybrid,Mumbai,Banking Operations; Customer Handling,2 Months,3000 / month,Assist branch operations; Handle documentation
+OJT Program 18,23,Taxation OJT,Hybrid,Mumbai,Income Tax; GST; Compliance,1 Month,8000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 19,40,Supply Chain OJT,Hybrid,Mumbai,Inventory Management; Excel; Logistics,1 Month,Unpaid,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 20,36,Taxation OJT,On-site,Mumbai,Income Tax; GST; Compliance,3 Months,5000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 21,28,Business Analytics OJT,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 22,38,Banking Operations OJT,Hybrid,Mumbai,Banking Operations; Customer Handling,1 Month,5000 / month,Assist branch operations; Handle documentation
+OJT Program 23,15,Supply Chain OJT,Hybrid,Mumbai,Inventory Management; Excel; Logistics,1 Month,10000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 24,16,Business Analytics OJT,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 25,6,Marketing OJT,Hybrid,Mumbai,Digital Marketing; SEO; Content Writing,1 Month,5000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 26,15,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,1 Month,3000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 27,49,Finance OJT,On-site,Mumbai,Financial Analysis; Excel; Ratio Analysis,3 Months,Unpaid,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 28,15,Accounting OJT,Remote,Mumbai,Tally; Excel; GST Basics,1 Month,8000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 29,35,Business Analytics OJT,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 30,20,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,3 Months,5000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 31,14,HR OJT,Remote,Mumbai,Recruitment; Communication; MS Office,3 Months,3000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 32,10,Accounting OJT,On-site,Mumbai,Tally; Excel; GST Basics,2 Months,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 33,24,Business Analytics OJT,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 34,41,Business Analytics OJT,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,1 Month,3000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 35,18,Banking Operations OJT,On-site,Mumbai,Banking Operations; Customer Handling,3 Months,5000 / month,Assist branch operations; Handle documentation
+OJT Program 36,20,Accounting OJT,On-site,Mumbai,Tally; Excel; GST Basics,2 Months,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 37,14,Entrepreneurship OJT,Remote,Mumbai,Business Planning; Market Research,6 Months,Unpaid,Conduct market research; Support startup strategy
+OJT Program 38,4,Accounting OJT,Remote,Mumbai,Tally; Excel; GST Basics,1 Month,5000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 39,47,Finance OJT,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,6 Months,5000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 40,9,HR OJT,Remote,Mumbai,Recruitment; Communication; MS Office,3 Months,5000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 41,16,Business Analytics OJT,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,10000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 42,9,Taxation OJT,On-site,Mumbai,Income Tax; GST; Compliance,6 Months,10000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 43,2,Banking Operations OJT,On-site,Mumbai,Banking Operations; Customer Handling,2 Months,3000 / month,Assist branch operations; Handle documentation
+OJT Program 44,26,Finance OJT,Hybrid,Mumbai,Financial Analysis; Excel; Ratio Analysis,3 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 45,30,Business Analytics OJT,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,3000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 46,40,Accounting OJT,Hybrid,Mumbai,Tally; Excel; GST Basics,3 Months,8000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 47,12,Entrepreneurship OJT,Hybrid,Mumbai,Business Planning; Market Research,3 Months,5000 / month,Conduct market research; Support startup strategy
+OJT Program 48,38,Finance OJT,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,1 Month,3000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 49,47,Entrepreneurship OJT,Remote,Mumbai,Business Planning; Market Research,1 Month,5000 / month,Conduct market research; Support startup strategy
+OJT Program 50,3,Investment Research OJT,Hybrid,Mumbai,Equity Research; Valuation; Financial Modeling,3 Months,8000 / month,Research stocks; Build valuation models; Prepare reports
+OJT Program 51,24,Supply Chain OJT,Hybrid,Mumbai,Inventory Management; Excel; Logistics,3 Months,3000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 52,19,Taxation OJT,Remote,Mumbai,Income Tax; GST; Compliance,6 Months,8000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 53,12,HR OJT,On-site,Mumbai,Recruitment; Communication; MS Office,2 Months,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 54,29,Supply Chain OJT,Hybrid,Mumbai,Inventory Management; Excel; Logistics,6 Months,8000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 55,33,Investment Research OJT,Hybrid,Mumbai,Equity Research; Valuation; Financial Modeling,6 Months,3000 / month,Research stocks; Build valuation models; Prepare reports
+OJT Program 56,14,HR OJT,Hybrid,Mumbai,Recruitment; Communication; MS Office,1 Month,5000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 57,31,Marketing OJT,On-site,Mumbai,Digital Marketing; SEO; Content Writing,3 Months,5000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 58,38,Entrepreneurship OJT,On-site,Mumbai,Business Planning; Market Research,2 Months,3000 / month,Conduct market research; Support startup strategy
+OJT Program 59,47,Business Analytics OJT,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,8000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 60,3,Banking Operations OJT,Remote,Mumbai,Banking Operations; Customer Handling,1 Month,5000 / month,Assist branch operations; Handle documentation
+OJT Program 61,24,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,2 Months,5000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 62,19,Banking Operations OJT,On-site,Mumbai,Banking Operations; Customer Handling,2 Months,3000 / month,Assist branch operations; Handle documentation
+OJT Program 63,12,Taxation OJT,Remote,Mumbai,Income Tax; GST; Compliance,6 Months,10000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 64,29,Banking Operations OJT,Remote,Mumbai,Banking Operations; Customer Handling,1 Month,5000 / month,Assist branch operations; Handle documentation
+OJT Program 65,33,Taxation OJT,Remote,Mumbai,Income Tax; GST; Compliance,3 Months,3000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 66,14,Business Analytics OJT,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,6 Months,Unpaid,Clean data; Create dashboards; Analyze trends
+OJT Program 67,31,Accounting OJT,Hybrid,Mumbai,Tally; Excel; GST Basics,6 Months,8000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 68,38,Marketing OJT,On-site,Mumbai,Digital Marketing; SEO; Content Writing,3 Months,8000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 69,47,Marketing OJT,On-site,Mumbai,Digital Marketing; SEO; Content Writing,6 Months,8000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 70,3,Banking Operations OJT,Hybrid,Mumbai,Banking Operations; Customer Handling,2 Months,8000 / month,Assist branch operations; Handle documentation
+OJT Program 71,24,HR OJT,Hybrid,Mumbai,Recruitment; Communication; MS Office,2 Months,5000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 72,19,HR OJT,Remote,Mumbai,Recruitment; Communication; MS Office,2 Months,Unpaid,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 73,12,HR OJT,On-site,Mumbai,Recruitment; Communication; MS Office,3 Months,8000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 74,29,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,2 Months,10000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 75,33,Business Analytics OJT,On-site,Mumbai,SQL; Power BI; Excel; Data Analysis,2 Months,5000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 76,14,Marketing OJT,Remote,Mumbai,Digital Marketing; SEO; Content Writing,2 Months,10000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 77,31,Finance OJT,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,2 Months,10000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 78,38,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,2 Months,8000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 79,47,Marketing OJT,Remote,Mumbai,Digital Marketing; SEO; Content Writing,3 Months,3000 / month,Manage social media; Create content; Assist campaigns
+OJT Program 80,3,Accounting OJT,Remote,Mumbai,Tally; Excel; GST Basics,1 Month,10000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 81,24,Finance OJT,Remote,Mumbai,Financial Analysis; Excel; Ratio Analysis,2 Months,3000 / month,Analyze financial data; Prepare reports; Assist budgeting
+OJT Program 82,19,HR OJT,Remote,Mumbai,Recruitment; Communication; MS Office,1 Month,10000 / month,Screen resumes; Coordinate interviews; Maintain HR records
+OJT Program 83,12,Taxation OJT,Hybrid,Mumbai,Income Tax; GST; Compliance,2 Months,10000 / month,Prepare tax returns; Assist audits; Maintain files
+OJT Program 84,29,Supply Chain OJT,Remote,Mumbai,Inventory Management; Excel; Logistics,6 Months,5000 / month,Track inventory; Coordinate vendors; Optimize supply
+OJT Program 85,33,Accounting OJT,Hybrid,Mumbai,Tally; Excel; GST Basics,6 Months,10000 / month,Assist in bookkeeping; Prepare vouchers; Support GST filing
+OJT Program 86,14,Business Analytics OJT,Remote,Mumbai,SQL; Power BI; Excel; Data Analysis,1 Month,10000 / month,Clean data; Create dashboards; Analyze trends
+OJT Program 87,31,Investment Research OJT,Hybrid,Mumbai,Equity Research; Valuation; Financial Modeling,1 Month,3000 / month,Research stocks; Build valuation models; Prepare reports
+OJT Program 88,38,Business Analytics OJT,Hybrid,Mumbai,SQL; Power BI; Excel; Data Analysis,3 Months,5000 / month,Clean data; Create dashboards; Analyze trends

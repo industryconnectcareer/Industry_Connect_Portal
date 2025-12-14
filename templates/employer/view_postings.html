@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+/* ---------- PAGE TITLE ---------- */
+.page-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: #0a575d;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ---------- POSTINGS WRAPPER ---------- */
+.posting-section {
+    max-width: 1100px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+/* ---------- SECTION TITLE ---------- */
+.section-header {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 14px;
+    border-left: 6px solid #0a575d;
+    padding-left: 12px;
+}
+
+/* ---------- CARD LIST ---------- */
+.posting-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---------- CARD ---------- */
+.card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.12);
+}
+
+/* ---------- LEFT SIDE DETAILS ---------- */
+.post-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.post-company {
+    font-size: 14px;
+    margin-top: 2px;
+    color: #777;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    background: #e8f7f7;
+    color: #0a575d;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    margin-right: 6px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+/* ---------- STATUS TAG ---------- */
+.status-tag {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.status-approved { background: #1c8c3a; }
+.status-pending  { background: #e8b200; }
+.status-rejected { background: #d9534f; }
+
+/* ---------- ACTION BUTTONS ---------- */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-view {
+    background: #0a575d;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-view:hover { background: #084b50; }
+
+.btn-delete {
+    background: #d9534f;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-delete:hover { background: #c9302c; }
+
+/* ---------- EMPTY MESSAGE ---------- */
+.empty-message {
+    text-align: center;
+    padding: 15px;
+    color: #777;
+    font-size: 15px;
+}
+</style>
+
+
+<!-- Page Heading -->
+<h2 class="page-title">My Postings</h2>
+
+
+
+<!-- ================================================================= -->
+<!-- 🔹 INTERNSHIP POSTINGS -->
+<!-- ================================================================= -->
+
+<div class="posting-section">
+    <div class="section-header">Internship Postings</div>
+
+    <div class="posting-list">
+
+        {% for p in postings %}
+        <div class="card">
+
+            <!-- LEFT DETAILS -->
+            <div>
+                <div class="post-title">{{ p.title }}</div>
+                <div class="post-company">{{ p.company_name }}</div>
+
+                <!-- Status -->
+                <div class="status-tag status-{{ p.status|lower }}">
+                    {{ p.status }}
+                </div>
+
+                <!-- Skills -->
+                <div class="tags">
+                    {% for s in p.skill_list() %}
+                    <span class="tag">{{ s }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- RIGHT ACTIONS -->
+            <div class="actions">
+
+                <!-- Applications Count -->
+                <a href="{{ url_for('employer.applications_review') }}?id={{ p.id }}" class="btn-view">
+                    View Applications ({{ p.applications.count() }})
+                </a>
+
+                <!-- Delete -->
+                <form action="{{ url_for('employer.delete_posting', id=p.id) }}" method="POST">
+                    <button class="btn-delete">Delete</button>
+                </form>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+        {% if postings|length == 0 %}
+        <p class="empty-message">You have not posted any internships.</p>
+        {% endif %}
+
+    </div>
+</div>
+
+
+
+<!-- ================================================================= -->
+<!-- 🔹 OJT PROGRAM LIST -->
+<!-- ================================================================= -->
+
+<div class="posting-section">
+    <div class="section-header">OJT Programs</div>
+
+    <div class="posting-list">
+
+        {% for o in ojts %}
+        <div class="card">
+
+            <!-- LEFT DETAILS -->
+            <div>
+                <div class="post-title">{{ o.title }}</div>
+                <div class="post-company">{{ o.company }}</div>
+
+                <!-- Format -->
+                <div class="status-tag status-approved">
+                    Duration: {{ o.duration }}
+                </div>
+
+                <div class="tags">
+                    {% for m in o.modules_list() %}
+                    <span class="tag">{{ m }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- RIGHT ACTIONS -->
+            <div class="actions">
+
+                <a href="{{ url_for('employer.ojt_detail', id=o.id) }}" class="btn-view">
+                    View Details
+                </a>
+
+                <form action="{{ url_for('employer.delete_ojt', id=o.id) }}" method="POST">
+                    <button class="btn-delete">Delete</button>
+                </form>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+        {% if ojts|length == 0 %}
+        <p class="empty-message">You have not posted any OJT programs yet.</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

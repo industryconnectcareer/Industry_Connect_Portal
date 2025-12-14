@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="skill-container">
+
+    <h2 class="page-title">Skill Assessment Tests</h2>
+    <p class="sub-text">
+        Attempt skill-based assessments to evaluate and improve your job readiness.
+    </p>
+
+    <div class="skill-grid">
+
+        {% for category in categories %}
+
+        {% set p = progress_map.get(category) %}
+
+        <a href="{{ url_for('resources.mcqs_test', category=category) }}"
+           class="skill-card">
+
+            <span class="skill-name">{{ category }}</span>
+
+            {% if p %}
+                {% if p.status == "Completed" %}
+                    <div class="status completed">✔ Completed</div>
+                {% else %}
+                    <div class="status failed">✖ Failed</div>
+                {% endif %}
+                <small class="score">Best Score: {{ p.best_score }}%</small>
+            {% else %}
+                <div class="status pending">⏳ Not Started</div>
+            {% endif %}
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- ================= STYLES ================= -->
+<style>
+.skill-container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 30px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #0a575d;
+}
+
+.sub-text {
+    text-align: center;
+    color: #555;
+    margin-bottom: 35px;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 22px;
+}
+
+.skill-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transition: 0.25s;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.skill-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 8px;
+}
+
+.status {
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+.status.completed {
+    color: #2ecc71;
+}
+
+.status.failed {
+    color: #e74c3c;
+}
+
+.status.pending {
+    color: #999;
+}
+
+.score {
+    display: block;
+    font-size: 13px;
+    margin-top: 4px;
+    color: #555;
+}
+</style>
+
+{% endblock %}

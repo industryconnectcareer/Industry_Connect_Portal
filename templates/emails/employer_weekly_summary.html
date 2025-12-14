@@ -1,0 +1,40 @@
+<!-- FILE: employer_weekly_summary.html -->
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial; background:#f4f6f7; padding:20px;">
+
+<div style="max-width:600px;margin:auto;background:#ffffff;padding:28px;border-radius:12px;
+            box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+
+    <h2 style="color:#006d66;margin-top:0;">Weekly Summary Report 📊</h2>
+
+    <p>Hello {{ employer_name }},</p>
+    <p>Here is your weekly performance summary on the Industry Connect Portal.</p>
+
+    <h3 style="color:#004c46;margin-top:20px;">📌 Applications Received</h3>
+    <div style="background:#eef9f7;padding:14px;border-radius:8px;">
+        {{ applications_list | safe }}
+    </div>
+
+    <h3 style="color:#004c46;margin-top:20px;">📌 Top Candidates</h3>
+    <div style="background:#f0f7fd;padding:14px;border-radius:8px;">
+        {{ top_candidates | safe }}
+    </div>
+
+    <h3 style="color:#004c46;margin-top:20px;">📌 Jobs Needing Action</h3>
+    <div style="background:#fff7e6;padding:14px;border-radius:8px;">
+        {{ pending_jobs | safe }}
+    </div>
+
+    <div style="text-align:center;margin-top:30px;">
+        <a href="{{ dashboard_link }}" style="background:#006d66;color:white;
+           padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:600;">
+            Go to Employer Dashboard
+        </a>
+    </div>
+
+    <p style="margin-top:30px;">Regards,<br><b>Industry Connect</b></p>
+</div>
+
+</body>
+</html>

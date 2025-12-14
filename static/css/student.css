@@ -1,0 +1,173 @@
+/* =========================================
+   student.css - Student Dashboard
+========================================= */
+
+/* ---------- Layout ---------- */
+.student-dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 900px) {
+    .student-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Sidebar ---------- */
+.student-sidebar {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    height: fit-content;
+}
+
+.student-sidebar h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--peacock-dark);
+}
+
+.sidebar-item {
+    padding: 10px 0;
+    font-size: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.sidebar-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-item:hover {
+    color: var(--peacock);
+    font-weight: 600;
+}
+
+/* ---------- Main Panel ---------- */
+.student-main {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Readiness Score ---------- */
+.score-box {
+    text-align: center;
+    padding: 24px;
+}
+
+.score-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    background: conic-gradient(
+        var(--peacock) calc(var(--score) * 1%), 
+        #e5e7eb calc(var(--score) * 1%)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--peacock-dark);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* ---------- Skill Badges ---------- */
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.skill-badge {
+    background: var(--peacock-soft);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    cursor: pointer;
+}
+
+.skill-badge:hover {
+    background: var(--peacock-soft-alt);
+}
+
+.skill-badge span {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--peacock-dark);
+}
+
+/* ---------- Applications List ---------- */
+.application-card {
+    padding: 18px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-light);
+    margin-bottom: 16px;
+}
+
+.application-status {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.status-applied {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.status-shortlisted {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status-rejected {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* ---------- Resume Score ---------- */
+.resume-score-box {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+
+.resume-progress {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.resume-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--peacock);
+    transition: width 1s ease;
+}
+
+.gap-fill {
+    height: 100%;
+    width: calc(var(--w) * 1%);
+    background: #0e6b72;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}

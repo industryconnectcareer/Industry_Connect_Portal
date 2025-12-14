@@ -1,0 +1,124 @@
+/* =========================================
+   employer.css - Employer Dashboard
+========================================= */
+
+/* ---------- Dashboard Layout ---------- */
+.employer-dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 900px) {
+    .employer-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Sidebar ---------- */
+.employer-sidebar {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.employer-sidebar h3 {
+    color: var(--peacock-dark);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.sidebar-option {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    cursor: pointer;
+}
+
+.sidebar-option:hover {
+    color: var(--peacock);
+    font-weight: 600;
+}
+
+/* ---------- Cards / Stats ---------- */
+.stat-card {
+    background: var(--peacock-soft);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--peacock-dark);
+}
+
+.stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ---------- Post Internship Form ---------- */
+.form-box {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.form-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--peacock-dark);
+}
+
+/* ---------- Applications Review ---------- */
+.application-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.application-table th,
+.application-table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 14px;
+}
+
+.application-table th {
+    color: var(--text-muted);
+    background: #f9fafb;
+}
+
+.review-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.review-btn {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-shortlist {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.btn-reject {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-select {
+    background: var(--peacock);
+    color: #ffffff;
+}

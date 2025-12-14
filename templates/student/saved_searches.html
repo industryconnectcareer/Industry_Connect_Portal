@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Saved Searches</h2>
+
+<div class="saved-container">
+
+    {% if searches %}
+        {% for s in searches %}
+        <div class="saved-card">
+
+            <!-- LEFT SECTION -->
+            <div>
+                <div class="saved-title">{{ s.query }}</div>
+
+                <div class="saved-meta">
+                    {% if s.category %}
+                    <span class="meta-pill">Category: {{ s.category }}</span>
+                    {% endif %}
+
+                    {% if s.mode %}
+                    <span class="meta-pill">Mode: {{ s.mode }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- VIEW LINK -->
+            <a href="{{ url_for('internships.internship_list') }}?q={{ s.query }}" class="view-btn">
+                View Results →
+            </a>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-saved">You have no saved searches yet.</p>
+    {% endif %}
+
+</div>
+
+
+<style>
+/* Container */
+.saved-container {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Page title */
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Saved Search Card */
+.saved-card {
+    background: #fff;
+    padding: 18px 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    transition: 0.25s ease;
+}
+
+.saved-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Title */
+.saved-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+/* Meta Section */
+.saved-meta {
+    margin-top: 6px;
+}
+
+.meta-pill {
+    background: #e8f4f4;
+    color: #0a575d;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+/* View Button */
+.view-btn {
+    padding: 10px 16px;
+    background: #0a575d;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.view-btn:hover {
+    background: #094d53;
+}
+
+/* Empty State */
+.no-saved {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+    margin-top: 25px;
+}
+</style>
+
+{% endblock %}

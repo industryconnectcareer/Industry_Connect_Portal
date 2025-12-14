@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-header">
+    <h2>📘 Tally Prime Guide</h2>
+    <p class="sub">Complete reference for Ledger Creation, Voucher Entries, GST Setup & Reports</p>
+</div>
+
+<div class="guide-box">
+
+    <h3 class="section-title">📙 What You Will Learn</h3>
+
+    <ul class="learn-list">
+        <li>✅ How to Create a Company in Tally</li>
+        <li>✅ Journal, Purchase, Sales, Contra & Payment Entries</li>
+        <li>✅ Ledger Creation & Group Classification</li>
+        <li>✅ GST Configuration & Tax Ledgers</li>
+        <li>✅ Daybook, Profit & Loss, Balance Sheet Reports</li>
+    </ul>
+
+    <a href="/static/resources/tally/tally_guide.pdf" class="resource-btn">
+        📄 Download Full Guide (PDF)
+    </a>
+</div>
+
+
+<style>
+/* ------- Page Header ------- */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0a575d;
+}
+.page-header .sub {
+    color: #666;
+    font-size: 15px;
+}
+
+/* ------- Guide Box ------- */
+.guide-box {
+    max-width: 750px;
+    margin: auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 15px;
+}
+
+/* ------- Learning List ------- */
+.learn-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+.learn-list li {
+    background: #f4fafa;
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: 1px solid #d7eaea;
+}
+
+/* ------- Download Button ------- */
+.resource-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #0a575d;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.25s ease;
+}
+.resource-btn:hover {
+    background: #094d53;
+    transform: translateY(-3px);
+}
+
+/* ------- Animation ------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+{% endblock %}

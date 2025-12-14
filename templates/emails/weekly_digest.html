@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background:#f4f6f7; padding:20px;">
+
+<div style="
+    max-width:600px;
+    margin:auto;
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+">
+
+    <!-- Header -->
+    <h2 style="color:#006d66; margin-top:0; font-size:26px;">
+        Your Weekly Internship Digest 📊
+    </h2>
+
+    <p style="font-size:16px; color:#333;">
+        Hello <b>{{ student_name }}</b>,
+    </p>
+
+    <p style="font-size:15px; color:#555; line-height:1.6;">
+        Here’s a quick look at new opportunities and personalized recommendations for you this week.
+    </p>
+
+    <!-- NEW INTERNSHIPS SECTION -->
+    <h3 style="color:#004c46; margin-top:25px; font-size:20px;">
+        🔹 New Internships Posted
+    </h3>
+    <div style="
+        background:#eef9f7;
+        padding:14px 16px;
+        border-radius:10px;
+        margin-top:10px;
+        font-size:15px;
+        line-height:1.6;
+        color:#444;
+    ">
+        {{ internship_list | safe }}
+    </div>
+
+    <!-- RECOMMENDED FOR YOU SECTION -->
+    <h3 style="color:#004c46; margin-top:28px; font-size:20px;">
+        🔹 Recommended for You
+    </h3>
+    <div style="
+        background:#f0f7fd;
+        padding:14px 16px;
+        border-radius:10px;
+        margin-top:10px;
+        font-size:15px;
+        line-height:1.6;
+        color:#444;
+    ">
+        {{ recommendation_list | safe }}
+    </div>
+
+    <!-- DEADLINE SECTION -->
+    <h3 style="color:#004c46; margin-top:28px; font-size:20px;">
+        🔹 Deadlines Approaching Soon ⏳
+    </h3>
+    <div style="
+        background:#fff7e6;
+        padding:14px 16px;
+        border-radius:10px;
+        margin-top:10px;
+        font-size:15px;
+        line-height:1.6;
+        color:#444;
+    ">
+        {{ deadline_list | safe }}
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div style="text-align:center; margin-top:30px;">
+        <a href="{{ portal_link }}"
+           style="
+                background:#0a575d;
+                color:#ffffff;
+                padding:12px 24px;
+                text-decoration:none;
+                border-radius:8px;
+                font-size:16px;
+                font-weight:600;
+                display:inline-block;
+            ">
+            Visit Portal
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <p style="margin-top:25px; font-size:15px; color:#555;">
+        Stay consistent — small steps every week build a strong career foundation!
+    </p>
+
+    <p style="font-size:14px; margin-top:10px; color:#666;">
+        Regards,<br>
+        <b style="color:#006d66;">Industry Connect</b>
+    </p>
+
+    <hr style="border:none; border-top:1px solid #e3e3e3; margin-top:25px;">
+    <p style="font-size:12px; color:#999; text-align:center;">
+        This is an automated email. Please do not reply.
+    </p>
+
+</div>
+
+</body>
+</html>

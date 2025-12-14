@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="reco-header">
+    <h2 class="page-title">AI Internship Recommendations</h2>
+    <p class="sub-title">Personalized suggestions based on your profile, skills, and activity</p>
+</div>
+
+<!-- Recommendation Grid -->
+<div id="recommendations-container" class="internship-grid"></div>
+
+<!-- Loader -->
+<div id="recommendations-loader" class="loader">
+    <div class="spinner"></div>
+    <p>Generating recommendations...</p>
+</div>
+
+<!-- Refresh Button -->
+<button id="refresh-recommendations" class="refresh-btn">
+    🔄 Refresh Recommendations
+</button>
+
+<script src="{{ url_for('static', filename='js/recommender.js') }}"></script>
+
+
+<style>
+/* Header Section */
+.reco-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sub-title {
+    color: #666;
+    font-size: 15px;
+}
+
+/* Grid */
+.internship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Recommendation Card */
+.reco-card {
+    padding: 18px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.reco-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.reco-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.reco-company {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.reco-category {
+    background: #e8f4f4;
+    color: #0a575d;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Loader */
+.loader {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+    display: none;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #0a575d;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    margin: auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Refresh Button */
+.refresh-btn {
+    margin: 25px auto;
+    display: block;
+    background: #0a575d;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.refresh-btn:hover {
+    background: #084b50;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    color: #777;
+    font-size: 15px;
+    margin-top: 25px;
+}
+</style>
+
+{% endblock %}

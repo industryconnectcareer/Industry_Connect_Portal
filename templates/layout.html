@@ -1,0 +1,53 @@
+<head>
+    <!-- Basic Page Setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>{% block title %}Industry Connect Portal — Internships, OJT & Career Tools{% endblock %}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="Industry Connect Portal for Commerce Students — Find verified internships, OJT, resume tools, MCQs, resources, finance & accounting guides.">
+    <meta name="keywords"
+          content="Internships, OJT, Commerce Students, Accounting, Finance, GST, Tally, Resume Tools, MCQs, Jobs, B.Com, M.Com">
+    <meta name="author" content="Industry Connect">
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Industry Connect Portal">
+    <meta property="og:description"
+          content="Verified internships and OJT programs for commerce students. Get career tools, resume analyzer, MCQs & resources.">
+    <meta property="og:image"
+          content="{{ url_for('static', filename='img/og-image.png', _external=True) }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Industry Connect Portal">
+    <meta name="twitter:description"
+          content="Find verified commerce internships, OJT, resume tools & more.">
+    <meta name="twitter:image"
+          content="{{ url_for('static', filename='img/og-image.png', _external=True) }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+          href="{{ url_for('static', filename='img/favicon.png') }}">
+
+    <!-- Web App / PWA Support -->
+    <meta name="theme-color" content="#0a575d">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+    <!-- Google Fonts (Optimized Loading) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block head %}{% endblock %}
+</head>

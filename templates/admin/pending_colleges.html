@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Table */
+.college-table {
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.college-table th {
+    background: #0a575d;
+    color: white;
+    padding: 14px;
+    font-size: 15px;
+}
+
+.college-table td {
+    padding: 14px;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 15px;
+}
+
+.college-table tr:hover {
+    background: #f4fbfa;
+}
+
+/* Status */
+.status-pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-pending {
+    background: #fff4d6;
+    color: #d88700;
+}
+
+/* Buttons */
+.btn-approve {
+    background: #0a8a37;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-reject {
+    background: #c62828;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-approve:hover { background: #06752f; }
+.btn-reject:hover { background: #a82121; }
+
+/* Empty State */
+.empty-row {
+    padding: 22px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+</style>
+
+<h2 class="page-title">🏫 Pending College Approvals</h2>
+
+<table class="college-table">
+
+    <tr>
+        <th>College Name</th>
+        <th>City</th>
+        <th>Contact Email</th>
+        <th>Join Code</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for c in colleges %}
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.city or "—" }}</td>
+        <td>{{ c.contact_email or "—" }}</td>
+        <td><strong>{{ c.college_code }}</strong></td>
+
+        <td>
+            <span class="status-pill status-pending">Pending</span>
+        </td>
+
+        <td>
+            <form method="POST"
+                  action="{{ url_for('admin.approve_college', college_id=c.id) }}"
+                  style="display:inline;"
+                  onsubmit="return confirm('Approve this college?');">
+                <button class="btn-approve">Approve</button>
+            </form>
+
+            <form method="POST"
+                  action="{{ url_for('admin.reject_college', college_id=c.id) }}"
+                  style="display:inline;"
+                  onsubmit="return confirm('Reject this college?');">
+                <button class="btn-reject">Reject</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+
+    {% if colleges|length == 0 %}
+    <tr>
+        <td colspan="6" class="empty-row">
+            🎉 No colleges awaiting approval
+        </td>
+    </tr>
+    {% endif %}
+
+</table>
+
+{% endblock %}

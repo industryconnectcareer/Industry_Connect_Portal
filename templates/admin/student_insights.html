@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Table Styling */
+.insights-table {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.insights-table th {
+    background: #0a575d;
+    color: white;
+    padding: 14px;
+    font-size: 15px;
+}
+
+.insights-table td {
+    padding: 14px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 15px;
+}
+
+/* Readiness Score Colors */
+.score-high {
+    font-weight: bold;
+    color: #0a8a37;
+}
+
+.score-medium {
+    font-weight: bold;
+    color: #d68b00;
+}
+
+.score-low {
+    font-weight: bold;
+    color: #c62828;
+}
+
+/* Badge Styling */
+.badge-tag {
+    display: inline-block;
+    background: #eef7f7;
+    padding: 6px 10px;
+    border-radius: 8px;
+    margin: 3px;
+    color: #0a575d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Empty Row */
+.empty-row {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+}
+</style>
+
+
+<h2 class="page-title">Student Insights</h2>
+
+<table class="insights-table">
+
+    <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Readiness Score</th>
+        <th>Skill Badges</th>
+        <th>Applications</th>
+    </tr>
+
+    {% for s in students %}
+    <tr>
+        <td>{{ s.name }}</td>
+        <td>{{ s.course or "—" }}</td>
+
+        <!-- Readiness Score with Color Indicator -->
+        <td>
+            {% set score = s.readiness or 0 %}
+            {% if score >= 70 %}
+                <span class="score-high">{{ score }}%</span>
+            {% elif score >= 40 %}
+                <span class="score-medium">{{ score }}%</span>
+            {% else %}
+                <span class="score-low">{{ score }}%</span>
+            {% endif %}
+        </td>
+
+        <!-- Badge List -->
+        <td>
+            {% if s.badges %}
+                {% for b in s.badges %}
+                    <span class="badge-tag" title="{{ b.name }}">
+                        {{ b.name }}
+                    </span>
+                {% endfor %}
+            {% else %}
+                <span style="color:#888;">No badges</span>
+            {% endif %}
+        </td>
+
+        <!-- Applications Count -->
+        <td>{{ s.applications or 0 }}</td>
+    </tr>
+    {% endfor %}
+
+    {% if students|length == 0 %}
+    <tr>
+        <td colspan="5" class="empty-row">
+            No student data available.
+        </td>
+    </tr>
+    {% endif %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    <h2 class="page-title">My Applications</h2>
+
+    <div class="application-list">
+
+        {% for a in applications %}
+        <div class="application-card">
+
+            <!-- LEFT SECTION -->
+            <div class="app-left">
+                <div class="app-title">{{ a.internship.title }}</div>
+
+                <div class="app-company">
+                    {{ a.internship.company_name or "Company Name Not Provided" }}
+                </div>
+
+                <div class="app-meta">
+                    <span>{{ a.internship.mode }}</span> • 
+                    <span>{{ a.internship.location }}</span>
+                </div>
+
+                <!-- Status -->
+                <div class="app-status">
+                    Status:
+                    <span class="status-badge status-{{ a.status|lower }}">
+                        {% if a.status == "Applied" %}📝{% endif %}
+                        {% if a.status == "Shortlisted" %}⭐{% endif %}
+                        {% if a.status == "Rejected" %}✖{% endif %}
+                        {{ a.status }}
+                    </span>
+                </div>
+
+                <!-- Date -->
+                {% if a.applied_at %}
+                <div class="app-date">
+                    Applied on: {{ a.applied_at.strftime('%d %b %Y') }}
+                </div>
+                {% endif %}
+            </div>
+
+
+            <!-- RIGHT SECTION -->
+            <div class="app-right">
+
+                {% if a.resume_path %}
+                <a href="{{ url_for('static', filename=a.resume_path) }}" 
+                   class="resume-btn" target="_blank">
+                    📄 Resume
+                </a>
+                {% endif %}
+
+                <a href="{{ url_for('internships.internship_detail', id=a.internship.id) }}"
+                   class="view-btn">
+                    View Internship →
+                </a>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+        {% if applications|length == 0 %}
+        <div class="empty-box">
+            <p>You haven’t applied to any internships yet.</p>
+            <a href="{{ url_for('internships.internship_list') }}" class="browse-btn">
+                Browse Internships
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<!-- ====================== STYLES ======================= -->
+<style>
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.application-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Card */
+.application-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    transition: 0.25s;
+}
+.application-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.13);
+}
+
+/* Left Section */
+.app-left {
+    flex: 1;
+}
+
+.app-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+.app-company {
+    font-size: 15px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.app-meta {
+    margin-top: 6px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-applied {
+    background: #e6f2ff;
+    color: #0b63ce;
+}
+
+.status-shortlisted {
+    background: #e4ffe9;
+    color: #098a2c;
+}
+
+.status-rejected {
+    background: #ffe6e6;
+    color: #d02323;
+}
+
+.app-date {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #777;
+}
+
+/* Right Section */
+.app-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Resume Button */
+.resume-btn {
+    padding: 10px 14px;
+    background: #0a575d;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+}
+.resume-btn:hover {
+    background: #094d53;
+}
+
+/* View Internship Button */
+.view-btn {
+    padding: 10px 14px;
+    background: #ffd369;
+    color: #222;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+}
+.view-btn:hover {
+    background: #f5c853;
+}
+
+/* Empty State */
+.empty-box {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
+}
+
+.browse-btn {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #0a575d;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.browse-btn:hover {
+    background: #094d53;
+}
+</style>
+
+{% endblock %}

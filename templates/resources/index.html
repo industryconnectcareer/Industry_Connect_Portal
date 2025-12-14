@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Skill Resources — Industry Connect{% endblock %}
+
+{% block content %}
+
+<div class="resources-container">
+
+    <h2 class="page-title">Skill Resources for Commerce Students</h2>
+    <p class="page-subtitle">Access tools, templates, guides, and test materials to improve your industry readiness.</p>
+
+    <div class="resources-grid">
+
+        <a href="{{ url_for('resources.resume_templates') }}" class="resource-card">
+            <span class="icon">📄</span>
+            <h3>Resume Templates</h3>
+            <p>Professional resumes for commerce students.</p>
+        </a>
+
+        <a href="{{ url_for('resources.excel_practice') }}" class="resource-card">
+            <span class="icon">📊</span>
+            <h3>Excel Practice Sheets</h3>
+            <p>Practice datasets for Excel basics to advanced.</p>
+        </a>
+
+        <a href="{{ url_for('resources.tally_guide') }}" class="resource-card">
+            <span class="icon">📘</span>
+            <h3>Tally Guide</h3>
+            <p>Beginner to advanced Tally tutorials.</p>
+        </a>
+
+        <a href="{{ url_for('resources.gst_guide') }}" class="resource-card">
+            <span class="icon">💼</span>
+            <h3>GST Guide</h3>
+            <p>Understand GST concepts with examples.</p>
+        </a>
+
+        <a href="{{ url_for('resources.interview_questions') }}" class="resource-card">
+            <span class="icon">🎤</span>
+            <h3>Interview Questions</h3>
+            <p>Top HR & domain interview questions.</p>
+        </a>
+
+        <a href="{{ url_for('resources.mcqs_test') }}" class="resource-card">
+            <span class="icon">📝</span>
+            <h3>MCQs</h3>
+            <p>Practice questions with scoring.</p>
+        </a>
+
+    </div>
+</div>
+
+<style>
+    .resources-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .page-title {
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 28px;
+        font-weight: 700;
+        color: #005f73;
+    }
+
+    .page-subtitle {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #555;
+        font-size: 15px;
+    }
+
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    .resource-card {
+        display: block;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #222;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .resource-card .icon {
+        font-size: 30px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .resource-card h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #0a9396;
+    }
+
+    .resource-card p {
+        font-size: 14px;
+        color: #555;
+        margin-top: 6px;
+    }
+</style>
+
+{% endblock %}

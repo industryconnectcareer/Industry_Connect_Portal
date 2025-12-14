@@ -1,0 +1,27 @@
+<!-- FILE: employer_document_missing.html -->
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial;background:#f4f6f7;padding:20px;">
+<div style="max-width:600px;background:#fff;margin:auto;padding:25px;border-radius:12px;">
+
+    <h2 style="color:#c62828;">Action Required ⚠</h2>
+
+    <p>Hello {{ employer_name }},</p>
+
+    <p>Your company verification cannot proceed because the following document(s) are missing:</p>
+
+    <div style="background:#fff3e0;padding:14px;border-radius:8px;">
+        {{ missing_docs | safe }}
+    </div>
+
+    <p>Please upload the remaining documents to complete verification.</p>
+
+    <a href="{{ upload_link }}" style="background:#006d66;color:white;
+       padding:12px 20px;border-radius:6px;text-decoration:none;">
+       Upload Documents
+    </a>
+
+    <p style="margin-top:20px;">Regards,<br><b>Industry Connect Verification Team</b></p>
+</div>
+</body>
+</html>

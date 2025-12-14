@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+/* ---------- HEADER ---------- */
+.career-header {
+    text-align: center;
+    padding: 40px 10px 20px;
+}
+
+.career-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0a575d;
+    margin-bottom: 6px;
+}
+
+.career-header .sub {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ---------- GRID ---------- */
+.stream-grid {
+    max-width: 1100px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    padding: 0 15px;
+}
+
+/* ---------- CARD ---------- */
+.stream-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    text-decoration: none;
+    color: #0a575d;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.25s ease;
+    border: 1px solid #e7f4f3;
+    position: relative;
+}
+
+/* Hover effect */
+.stream-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    border-color: #0a575d;
+}
+
+/* ---------- ICON ---------- */
+.stream-icon {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: #e1f4f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: #0a575d;
+    transition: 0.25s ease;
+}
+
+.stream-card:hover .stream-icon {
+    background: #0a575d;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* ---------- TITLE ---------- */
+.stream-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+/* ---------- DESCRIPTION ---------- */
+.stream-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4em;
+}
+
+</style>
+
+
+<div class="career-header">
+    <h2>Career Path Navigator</h2>
+    <p class="sub">Discover the right commerce career based on your skills and interests</p>
+</div>
+
+<div class="stream-grid">
+
+    {% for stream in streams %}
+    <a href="/career/streams/{{ stream.id }}" class="stream-card">
+
+        <div class="stream-icon">
+            {{ stream.icon }}
+        </div>
+
+        <div class="stream-title">{{ stream.name }}</div>
+        <div class="stream-desc">{{ stream.description }}</div>
+
+    </a>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

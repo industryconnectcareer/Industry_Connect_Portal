@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+/* ---------- PAGE TITLE ---------- */
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* ---------- CONTAINER ---------- */
+.pending-list {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* ---------- COMPANY CARD ---------- */
+.pending-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-left: 6px solid #0a575d;
+    transition: 0.25s ease;
+}
+
+.pending-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Title Row */
+.company-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Optional logo */
+.company-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+}
+
+.company-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a575d;
+}
+
+/* Info section */
+.info {
+    margin-top: 10px;
+}
+
+.info p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+.info a {
+    color: #0a575d;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* Buttons */
+.actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+}
+
+.approve-btn,
+.reject-btn {
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.approve-btn {
+    background: #0a575d;
+    color: white;
+}
+
+.approve-btn:hover {
+    background: #084b50;
+}
+
+.reject-btn {
+    background: #c62828;
+    color: white;
+}
+
+.reject-btn:hover {
+    background: #a32020;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+}
+
+</style>
+
+
+
+<h2 class="page-title">Pending Company Approvals</h2>
+
+<div class="pending-list">
+
+    {% for c in companies %}
+    <div class="pending-card">
+
+        <div class="company-header">
+            {% if c.company_logo %}
+                <img src="{{ c.company_logo }}" class="company-logo">
+            {% endif %}
+            <div class="company-name">{{ c.company_name }}</div>
+        </div>
+
+        <div class="info">
+            {% if c.business_pan %}
+            <p><strong>PAN:</strong> {{ c.business_pan }}</p>
+            {% endif %}
+
+            {% if c.business_email %}
+            <p><strong>Email:</strong> {{ c.business_email }}</p>
+            {% endif %}
+
+            {% if c.address %}
+            <p><strong>Address:</strong> {{ c.address }}</p>
+            {% endif %}
+
+            {% if c.contact_number %}
+            <p><strong>Phone:</strong> {{ c.contact_number }}</p>
+            {% endif %}
+
+            {% if c.website %}
+            <p><strong>Website:</strong>
+                <a href="{{ c.website }}" target="_blank">{{ c.website }}</a>
+            </p>
+            {% endif %}
+
+            {% if c.gst_doc_path %}
+                <p><a href="{{ c.gst_doc_path }}" target="_blank">📄 View GST Certificate</a></p>
+            {% endif %}
+            
+            {% if c.msme_doc_path %}
+                <p><a href="{{ c.msme_doc_path }}" target="_blank">📄 View MSME Certificate</a></p>
+            {% endif %}
+        </div>
+
+        <div class="actions">
+            <form action="{{ url_for('admin.approve_company', company_id=c.id) }}" method="POST">
+                <button class="approve-btn">Approve</button>
+            </form>
+
+            <form action="{{ url_for('admin.reject_company', company_id=c.id) }}" method="POST">
+                <button class="reject-btn">Reject</button>
+            </form>
+        </div>
+
+    </div>
+    {% endfor %}
+
+
+    {% if companies|length == 0 %}
+        <div class="empty-state">🎉 No pending companies right now!</div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

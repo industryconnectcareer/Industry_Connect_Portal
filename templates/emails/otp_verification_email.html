@@ -1,0 +1,23 @@
+<!-- FILE: otp_verification_email.html -->
+<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;background:#f4f6f7;padding:20px;">
+
+<div style="max-width:600px;background:white;margin:auto;padding:25px;border-radius:12px;">
+    <h2 style="color:#006d66;">Verify Your Account 🔐</h2>
+
+    <p>Hello {{ name }},</p>
+    <p>Your OTP for account verification is:</p>
+
+    <div style="font-size:26px;font-weight:bold;color:#004c46;
+                background:#eef9f7;padding:14px;border-radius:8px;text-align:center;">
+        {{ otp }}
+    </div>
+
+    <p style="margin-top:15px;">This OTP is valid for 10 minutes.</p>
+
+    <p>Regards,<br><b>Industry Connect</b></p>
+</div>
+
+</body>
+</html>

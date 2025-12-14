@@ -1,0 +1,52 @@
+user_id,email,company_name,slug,tagline,industry,location,address,website,contact_number,contact_email,company_logo,banner_image
+201,hr@finedge.com,FinEdge Solutions,finedge-solutions,Empowering smarter financial decisions,Finance,Mumbai,"BKC, Mumbai",https://www.finedge.com,9876500001,hr@finedge.com,finedge.png,finedge_banner.jpg
+202,info@taxpro.in,TaxPro Advisors,taxpro-advisors,Simplifying taxation,Taxation,Mumbai,"Andheri East, Mumbai",https://www.taxpro.in,9876500002,info@taxpro.in,taxpro.png,taxpro_banner.jpg
+203,contact@ledgerworks.in,LedgerWorks,ledgerworks,Accounting made easy,Accounting,Navi Mumbai,"Vashi, Navi Mumbai",https://www.ledgerworks.in,9876500003,contact@ledgerworks.in,ledger.png,ledger_banner.jpg
+204,admin@auditsphere.com,AuditSphere,auditsphere,Trust through audit,Auditing,Mumbai,"Lower Parel, Mumbai",https://www.auditsphere.com,9876500004,admin@auditsphere.com,audit.png,audit_banner.jpg
+205,careers@marketpulse.in,MarketPulse,marketpulse,Insights that matter,Investment Research,Mumbai,"Nariman Point, Mumbai",https://www.marketpulse.in,9876500005,careers@marketpulse.in,marketpulse.png,marketpulse_banner.jpg
+206,hr@databridge.ai,DataBridge Analytics,databridge-analytics,Data to decisions,Business Analytics,Mumbai,"Powai, Mumbai",https://www.databridge.ai,9876500006,hr@databridge.ai,databridge.png,databridge_banner.jpg
+207,info@supplychainx.com,SupplyChainX,supplychainx,Logistics optimized,Supply Chain,Navi Mumbai,"Turbhe, Navi Mumbai",https://www.supplychainx.com,9876500007,info@supplychainx.com,scx.png,scx_banner.jpg
+208,hr@peoplefirsthr.in,PeopleFirst HR,peoplefirst-hr,People powered growth,HR,Mumbai,"Dadar West, Mumbai",https://www.peoplefirsthr.in,9876500008,hr@peoplefirsthr.in,peoplefirst.png,peoplefirst_banner.jpg
+209,hello@brandspark.in,BrandSpark,brandspark,Digital growth partners,Digital Marketing,Mumbai,"Goregaon East, Mumbai",https://www.brandspark.in,9876500009,hello@brandspark.in,brandspark.png,brandspark_banner.jpg
+210,careers@finmodellabs.com,FinModel Labs,finmodel-labs,Future-ready finance,Financial Modeling,Mumbai,"Lower Parel, Mumbai",https://www.finmodellabs.com,9876500010,careers@finmodellabs.com,finmodel.png,finmodel_banner.jpg
+211,info@bizopsstudio.in,BizOps Studio,bizops-studio,Smarter operations,Business Operations,Mumbai,"Kurla West, Mumbai",https://www.bizopsstudio.in,9876500011,info@bizopsstudio.in,bizops.png,bizops_banner.jpg
+212,hr@equitrust.in,EquiTrust,equitrust,Equity research simplified,Equity Research,Mumbai,"Fort, Mumbai",https://www.equitrust.in,9876500012,hr@equitrust.in,equitrust.png,equitrust_banner.jpg
+213,contact@riskshield.in,RiskShield,riskshield,Managing risk better,Risk Management,Navi Mumbai,"Belapur, Navi Mumbai",https://www.riskshield.in,9876500013,contact@riskshield.in,riskshield.png,riskshield_banner.jpg
+214,support@insureease.in,InsureEase,insureease,Insurance made simple,Insurance,Mumbai,"Malad West, Mumbai",https://www.insureease.in,9876500014,support@insureease.in,insureease.png,insureease_banner.jpg
+215,advisor@wealthnest.in,WealthNest,wealthnest,Grow your wealth,Wealth Management,Mumbai,"Powai, Mumbai",https://www.wealthnest.in,9876500015,advisor@wealthnest.in,wealthnest.png,wealthnest_banner.jpg
+216,info@logicore.in,LogiCore,logicore,Smart logistics,Logistics,Navi Mumbai,"Panvel, Navi Mumbai",https://www.logicore.in,9876500016,info@logicore.in,logicore.png,logicore_banner.jpg
+217,hr@supplypro.in,SupplyPro,supplypro,Supply chain excellence,Supply Chain,Mumbai,"Bhiwandi, Mumbai",https://www.supplypro.in,9876500017,hr@supplypro.in,supplypro.png,supplypro_banner.jpg
+218,admin@hrsync.in,HRSync,hrsync,HR simplified,HR,Mumbai,"Santacruz East, Mumbai",https://www.hrsync.in,9876500018,admin@hrsync.in,hrsync.png,hrsync_banner.jpg
+219,hello@marketminds.in,MarketMinds,marketminds,Marketing intelligence,Marketing,Mumbai,"Andheri West, Mumbai",https://www.marketminds.in,9876500019,hello@marketminds.in,marketminds.png,marketminds_banner.jpg
+220,careers@digitalnova.in,DigitalNova,digitalnova,Digital first brands,Digital Marketing,Mumbai,"Jogeshwari East, Mumbai",https://www.digitalnova.in,9876500020,careers@digitalnova.in,digitalnova.png,digitalnova_banner.jpg
+221,info@accubooks.in,AccuBooks,accubooks,Precision accounting,Accounting,Mumbai,"Borivali West, Mumbai",https://www.accubooks.in,9876500021,info@accubooks.in,accubooks.png,accubooks_banner.jpg
+222,support@taxnest.in,TaxNest,taxnest,Your tax partner,Taxation,Navi Mumbai,"Airoli, Navi Mumbai",https://www.taxnest.in,9876500022,support@taxnest.in,taxnest.png,taxnest_banner.jpg
+223,admin@auditplus.in,AuditPlus,auditplus,Beyond compliance,Auditing,Mumbai,"Matunga, Mumbai",https://www.auditplus.in,9876500023,admin@auditplus.in,auditplus.png,auditplus_banner.jpg
+224,hr@finsight.in,FinSight,finsight,Clarity in finance,Finance,Mumbai,"Chembur, Mumbai",https://www.finsight.in,9876500024,hr@finsight.in,finsight.png,finsight_banner.jpg
+225,careers@datawave.ai,DataWave,datawave,Analytics redefined,Business Analytics,Navi Mumbai,"Ghansoli, Navi Mumbai",https://www.datawave.ai,9876500025,careers@datawave.ai,datawave.png,datawave_banner.jpg
+226,contact@biztrack.in,BizTrack,biztrack,Track business growth,Business Administration,Mumbai,"Wadala, Mumbai",https://www.biztrack.in,9876500026,contact@biztrack.in,biztrack.png,biztrack_banner.jpg
+227,info@opscraft.in,OpsCraft,opscraft,Operational excellence,Business Operations,Mumbai,"Saki Naka, Mumbai",https://www.opscraft.in,9876500027,info@opscraft.in,opscraft.png,opscraft_banner.jpg
+228,hr@equilab.in,EquiLab,equilab,Equity insights,Equity Research,Mumbai,"Churchgate, Mumbai",https://www.equilab.in,9876500028,hr@equilab.in,equilab.png,equilab_banner.jpg
+229,admin@riskcore.in,RiskCore,riskcore,Risk simplified,Risk Management,Mumbai,"Ghatkopar East, Mumbai",https://www.riskcore.in,9876500029,admin@riskcore.in,riskcore.png,riskcore_banner.jpg
+230,support@insuraplus.in,InsuraPlus,insuraplus,Insurance solutions,Insurance,Mumbai,"Kandivali East, Mumbai",https://www.insuraplus.in,9876500030,support@insuraplus.in,insuraplus.png,insuraplus_banner.jpg
+231,advisor@wealthgrow.in,WealthGrow,wealthgrow,Grow with confidence,Wealth Management,Navi Mumbai,"Kharghar, Navi Mumbai",https://www.wealthgrow.in,9876500031,advisor@wealthgrow.in,wealthgrow.png,wealthgrow_banner.jpg
+232,info@logifast.in,LogiFast,logifast,Fast & reliable logistics,Logistics,Mumbai,"Worli, Mumbai",https://www.logifast.in,9876500032,info@logifast.in,logifast.png,logifast_banner.jpg
+233,hr@supplyedge.in,SupplyEdge,supplyedge,Edge in supply chain,Supply Chain,Mumbai,"Byculla, Mumbai",https://www.supplyedge.in,9876500033,hr@supplyedge.in,supplyedge.png,supplyedge_banner.jpg
+234,contact@hrbridge.in,HRBridge,hrbridge,Connecting people,HR,Navi Mumbai,"Seawoods, Navi Mumbai",https://www.hrbridge.in,9876500034,contact@hrbridge.in,hrbridge.png,hrbridge_banner.jpg
+235,hello@brandlift.in,BrandLift,brandlift,Lift your brand,Marketing,Mumbai,"Malad East, Mumbai",https://www.brandlift.in,9876500035,hello@brandlift.in,brandlift.png,brandlift_banner.jpg
+236,careers@digitalorbit.in,DigitalOrbit,digitalorbit,Orbit your audience,Digital Marketing,Mumbai,"Versova, Mumbai",https://www.digitalorbit.in,9876500036,careers@digitalorbit.in,digitalorbit.png,digitalorbit_banner.jpg
+237,info@accountix.in,Accountix,accountix,Smart accounting tools,Accounting,Mumbai,"Khar West, Mumbai",https://www.accountix.in,9876500037,info@accountix.in,accountix.png,accountix_banner.jpg
+238,support@taxwise.in,TaxWise,taxwise,Tax done right,Taxation,Mumbai,"Mulund West, Mumbai",https://www.taxwise.in,9876500038,support@taxwise.in,taxwise.png,taxwise_banner.jpg
+239,admin@auditedge.in,AuditEdge,auditedge,Audit with clarity,Auditing,Navi Mumbai,"Nerul, Navi Mumbai",https://www.auditedge.in,9876500039,admin@auditedge.in,auditedge.png,auditedge_banner.jpg
+240,hr@finaura.in,FinAura,finaura,Financial clarity,Finance,Mumbai,"Sion, Mumbai",https://www.finaura.in,9876500040,hr@finaura.in,finaura.png,finaura_banner.jpg
+241,careers@datacore.ai,DataCore,datacore,Core analytics,Business Analytics,Mumbai,"Vikhroli West, Mumbai",https://www.datacore.ai,9876500041,careers@datacore.ai,datacore.png,datacore_banner.jpg
+242,info@bizmatrix.in,BizMatrix,bizmatrix,Structured growth,Business Administration,Mumbai,"Colaba, Mumbai",https://www.bizmatrix.in,9876500042,info@bizmatrix.in,bizmatrix.png,bizmatrix_banner.jpg
+243,contact@opsflow.in,OpsFlow,opsflow,Flowing operations,Business Operations,Navi Mumbai,"Ulwe, Navi Mumbai",https://www.opsflow.in,9876500043,contact@opsflow.in,opsflow.png,opsflow_banner.jpg
+244,hr@equiprime.in,EquiPrime,equiprime,Prime equity research,Equity Research,Mumbai,"Kalbadevi, Mumbai",https://www.equiprime.in,9876500044,hr@equiprime.in,equiprime.png,equiprime_banner.jpg
+245,admin@riskmate.in,RiskMate,riskmate,Your risk partner,Risk Management,Mumbai,"Kanjurmarg East, Mumbai",https://www.riskmate.in,9876500045,admin@riskmate.in,riskmate.png,riskmate_banner.jpg
+246,support@insuresmart.in,InsureSmart,insuresmart,Smart insurance,Insurance,Mumbai,"Goregaon West, Mumbai",https://www.insuresmart.in,9876500046,support@insuresmart.in,insuresmart.png,insuresmart_banner.jpg
+247,advisor@wealthsphere.in,WealthSphere,wealthsphere,Wealth ecosystem,Wealth Management,Mumbai,"Andheri East, Mumbai",https://www.wealthsphere.in,9876500047,advisor@wealthsphere.in,wealthsphere.png,wealthsphere_banner.jpg
+248,info@loginet.in,LogiNet,loginet,Connected logistics,Logistics,Navi Mumbai,"Kalamboli, Navi Mumbai",https://www.loginet.in,9876500048,info@loginet.in,loginet.png,loginet_banner.jpg
+249,hr@supplymax.in,SupplyMax,supplymax,Maximize supply,Supply Chain,Mumbai,"Masjid Bunder, Mumbai",https://www.supplymax.in,9876500049,hr@supplymax.in,supplymax.png,supplymax_banner.jpg
+250,contact@hrvertex.in,HRVertex,hrvertex,HR at the core,HR,Mumbai,"Bandra West, Mumbai",https://www.hrvertex.in,9876500050,contact@hrvertex.in,hrvertex.png,hrvertex_banner.jpg
+251,hello@brandcore.in,BrandCore,brandcore,Brand strategy hub,Marketing,Navi Mumbai,"Sanpada, Navi Mumbai",https://www.brandcore.in,9876500051,hello@brandcore.in,brandcore.png,brandcore_banner.jpg

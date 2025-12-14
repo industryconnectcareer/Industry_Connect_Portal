@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="score-container">
+
+    <h2 class="page-title">Job Readiness Score</h2>
+
+    <!-- Apply gradient using JS to avoid CSS errors -->
+    <div class="score-wrapper">
+        <div class="score-circle" 
+             id="scoreCircle"
+             data-gradient="{{ gradient }}">
+            <div class="score-value">{{ score }}%</div>
+        </div>
+        <p class="score-subtext">Your overall employability score</p>
+    </div>
+
+    <div class="breakdown-box">
+        <h3 class="breakdown-title">Score Breakdown</h3>
+
+        {% for s in breakdown %}
+        <div class="breakdown-item">
+            <div class="breakdown-label">
+                <span class="icon">✔</span> {{ s.name }}
+            </div>
+            <div class="breakdown-value">{{ s.value }}%</div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+<!-- ================= JS: Apply gradient after page loads (no CSS errors) ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const circle = document.getElementById("scoreCircle");
+    const gradient = circle.dataset.gradient;
+    circle.style.background = gradient;
+});
+</script>
+
+
+<!-- ================= CSS (No Jinja Inside, No Errors) ================= -->
+<style>
+.score-container {
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #0a575d;
+    margin-bottom: 25px;
+}
+
+.score-wrapper {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.score-circle {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15),
+        inset 0 6px 12px rgba(0,0,0,0.1);
+    animation: popIn 0.9s ease-out;
+}
+
+.score-value {
+    font-size: 48px;
+    font-weight: 800;
+    color: #0a575d;
+}
+
+.score-subtext {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #555;
+}
+
+.breakdown-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    animation: slideUp 0.7s ease-out;
+}
+
+.breakdown-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.breakdown-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    color: #0a575d;
+    font-weight: bold;
+}
+
+.breakdown-value {
+    font-weight: 700;
+    color: #0a575d;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.6); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+{% endblock %}

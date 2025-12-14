@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Your Results ({{ category }})</h2>
+
+<h3 class="score">
+    Score: {{ score }} / {{ total }}
+</h3>
+
+<div class="results-box">
+
+    {% for r in results %}
+    <div class="result-card">
+        <h4>{{ loop.index }}. {{ r.question }}</h4>
+
+        {% set options = ['A','B','C','D'] %}
+        {% for opt in options %}
+            {% set text = r.options[loop.index0] %}
+            <div class="option 
+                        {% if opt == r.correct %} correct 
+                        {% elif opt == r.user %} wrong 
+                        {% endif %}">
+                {{ opt }}. {{ text }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+</div>
+
+<style>
+.correct { background:#c8f7c5; }
+.wrong { background:#f7c5c5; }
+</style>
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Employer Verification Dashboard</h2>
+
+<div class="admin-section">
+
+    {% if employers %}
+    <table class="verify-table upgraded-table">
+
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Documents</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for e in employers %}
+            <tr>
+
+                <!-- Company -->
+                <td>
+                    <strong>{{ e.company_name }}</strong><br>
+                    <small>Employer ID: {{ e.id }}</small>
+                </td>
+
+                <!-- Email -->
+                <td>{{ e.contact_email or e.email }}</td>
+
+                <!-- Documents -->
+                <td>
+                    {% if e.business_pan %}
+                        <a href="{{ url_for('static', filename=e.business_pan) }}" target="_blank">PAN</a><br>
+                    {% else %}
+                        <span class="missing-doc">PAN Missing</span><br>
+                    {% endif %}
+
+                    {% if e.gst_doc_path %}
+                        <a href="{{ url_for('static', filename=e.gst_doc_path) }}" target="_blank">GST</a><br>
+                    {% else %}
+                        <span class="missing-doc">GST Missing</span><br>
+                    {% endif %}
+
+                    {% if e.msme_doc_path %}
+                        <a href="{{ url_for('static', filename=e.msme_doc_path) }}" target="_blank">MSME</a>
+                    {% else %}
+                        <span class="missing-doc">No MSME</span>
+                    {% endif %}
+                </td>
+
+                <!-- Status -->
+                <td>
+                    {% if e.status == "Approved" %}
+                        <span class="status-badge approved">Approved</span>
+                    {% elif e.status == "Rejected" %}
+                        <span class="status-badge rejected">Rejected</span>
+                    {% else %}
+                        <span class="status-badge pending">Pending</span>
+                    {% endif %}
+                </td>
+
+                <!-- Approve / Reject -->
+                <td>
+                    <form method="POST" 
+                          action="{{ url_for('admin.approve_employer', employer_id=e.id) }}"
+                          onsubmit="return confirm('Are you sure you want to APPROVE this employer?');"
+                          style="display:inline;">
+                        <button class="verify-btn btn-approve">Approve</button>
+                    </form>
+
+                    <form method="POST"
+                          action="{{ url_for('admin.reject_employer', employer_id=e.id) }}"
+                          onsubmit="return confirm('Reject this employer?');"
+                          style="display:inline;">
+                        <button class="verify-btn btn-reject">Reject</button>
+                    </form>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    {% else %}
+        <p class="empty-message">🎉 All employers are verified. No pending requests!</p>
+    {% endif %}
+
+</div>
+
+<style>
+.upgraded-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.upgraded-table th, .upgraded-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.verify-btn {
+    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-approve { background: #28a745; color: white; }
+.btn-reject { background: #dc3545; color: white; }
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: white;
+}
+
+.status-badge.approved { background: #28a745; }
+.status-badge.pending { background: #ffc107; color: #333; }
+.status-badge.rejected { background: #dc3545; }
+
+.missing-doc {
+    color: #999;
+    font-size: 12px;
+}
+
+.empty-message {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+}
+</style>
+
+{% endblock %}

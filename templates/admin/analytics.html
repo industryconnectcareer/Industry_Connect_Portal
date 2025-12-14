@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.analytics-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.analytics-box h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stats-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    flex: 1;
+    background: #0a575d;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+}
+.stat-card span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+</style>
+
+<h2 class="page-title">📊 Analytics Dashboard</h2>
+
+<!-- TOP STATS -->
+<div class="stats-row">
+    <div class="stat-card">
+        Total Students
+        <span>{{ students }}</span>
+    </div>
+    <div class="stat-card">
+        Total Employers
+        <span>{{ employers }}</span>
+    </div>
+    <div class="stat-card">
+        Total Internships
+        <span>{{ internships }}</span>
+    </div>
+</div>
+
+<!-- ANALYTICS GRID -->
+<div class="analytics-grid">
+
+    <div class="analytics-box">
+        <h3>📌 Most Demanded Roles</h3>
+        <canvas id="rolesChart"></canvas>
+    </div>
+
+    <div class="analytics-box">
+        <h3>📈 Monthly Student Registrations</h3>
+        <canvas id="studentsChart"></canvas>
+    </div>
+
+    <div class="analytics-box">
+        <h3>🏷 Category-wise Internships</h3>
+        <canvas id="categoriesChart"></canvas>
+    </div>
+
+    <div class="analytics-box">
+        <h3>📍 Top Internship Locations</h3>
+        <canvas id="locationsChart"></canvas>
+    </div>
+
+    <div class="analytics-box">
+        <h3>🧪 Application Status Distribution</h3>
+        <canvas id="applicationsChart"></canvas>
+    </div>
+
+    <div class="analytics-box">
+        <h3>⭐ Internship Approval Trends</h3>
+        <canvas id="approvalChart"></canvas>
+    </div>
+
+</div>
+
+<!-- CHART JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const categoryLabels = JSON.parse('{{ categories | map(attribute=0) | list | tojson | safe }}');
+    const categoryCounts = JSON.parse('{{ categories | map(attribute=1) | list | tojson | safe }}');
+
+    const locationLabels = JSON.parse('{{ locations | map(attribute=0) | list | tojson | safe }}');
+    const locationCounts = JSON.parse('{{ locations | map(attribute=1) | list | tojson | safe }}');
+
+    const appLabels = JSON.parse('{{ app_trends | map(attribute=0) | list | tojson | safe }}');
+    const appCounts = JSON.parse('{{ app_trends | map(attribute=1) | list | tojson | safe }}');
+</script>
+
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
+{% endblock %}

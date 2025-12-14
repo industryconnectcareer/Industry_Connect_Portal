@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="resume-score-container">
+
+    <!-- PAGE TITLE -->
+    <h2 class="page-title">AI Resume Score</h2>
+    <p class="sub-text">Your resume has been analyzed using AI. Here is your score and personalized suggestions.</p>
+
+    <!-- SCORE CIRCLE -->
+    <div class="score-wrapper">
+        <div class="score-circle" style="--score: {{ resume_score }}%;">
+            <div class="score-value">{{ resume_score }}%</div>
+        </div>
+        <p class="score-label">Overall Resume Strength</p>
+    </div>
+
+    <!-- SUGGESTIONS SECTION -->
+    <div class="suggestions-box">
+        <h3 class="section-title">Improvement Suggestions</h3>
+
+        {% if suggestions %}
+        <ul class="improve-list">
+            {% for tip in suggestions %}
+            <li>
+                <span class="bullet">✔</span>
+                {{ tip }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="no-suggestions">No suggestions available.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+
+<style>
+/* Container */
+.resume-score-container {
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Title */
+.page-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #0a575d;
+    margin-bottom: 8px;
+}
+
+.sub-text {
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+/* Score Circle Layout */
+.score-wrapper {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+/* SCORE CIRCLE (CSS FIXED) */
+.score-circle {
+    width: 180px;
+    height: 180px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(#0e6b72 var(--score), #d9d9d9 var(--score));
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15),
+        inset 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.score-value {
+    font-size: 48px;
+    font-weight: 800;
+    color: #0a575d;
+}
+
+.score-label {
+    color: #555;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+/* Suggestions Box */
+.suggestions-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a575d;
+    margin-bottom: 15px;
+}
+
+/* Suggestion List */
+.improve-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.improve-list li {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.improve-list li:last-child {
+    border-bottom: none;
+}
+
+.bullet {
+    color: #0a575d;
+    font-size: 18px;
+}
+
+.no-suggestions {
+    text-align: center;
+    color: #777;
+    padding: 10px 0;
+}
+</style>
+
+{% endblock %}

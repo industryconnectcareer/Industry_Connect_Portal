@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="profile-wrapper">
+
+    <h2 class="page-title">Company Profile Verification</h2>
+    <p class="subtext">
+        Your company must be verified by Admin before posting internships or OJT programs.
+    </p>
+
+    {% if company %}
+        <div class="status-tag {{ company.status|lower }}">
+            <b>Status:</b> {{ company.status }}
+        </div>
+    {% endif %}
+
+    <form action="{{ url_for('employer.company_profile') }}"
+          method="POST" enctype="multipart/form-data"
+          class="company-form">
+
+        <!-- Company Name -->
+        <label>Company Name <span class="req">*</span></label>
+        <input type="text" name="company_name"
+               value="{{ company.company_name if company else '' }}"
+               required>
+
+        <!-- Description -->
+        <label>Company Description</label>
+        <textarea name="description" rows="3"
+                  placeholder="Describe what your company does">{{ company.description if company else '' }}</textarea>
+
+        <!-- Address -->
+        <label>Company Address <span class="req">*</span></label>
+        <textarea name="address" rows="2"
+                  placeholder="Office address with pincode"
+                  required>{{ company.address if company else '' }}</textarea>
+
+        <!-- Website -->
+        <label>Company Website (Optional)</label>
+        <input type="url" name="website_url"
+               placeholder="https://example.com"
+               value="{{ company.website_url if company else '' }}">
+
+
+        <!-- Business Mobile -->
+        <label>Business Mobile Number <span class="req">*</span></label>
+        <input type="text" name="mobile" maxlength="10"
+               placeholder="9876543210"
+               value="{{ company.mobile if company else '' }}"
+               pattern="[0-9]{10}"
+               required>
+
+
+        <!-- EMAIL VERIFICATION SECTION -->
+        <label>Business Email <span class="req">*</span></label>
+
+        <div class="otp-row">
+            <input type="email" id="business_email"
+                   placeholder="yourcompany@example.com"
+                   value="{{ company.business_email if company else '' }}"
+                   {% if company and company.email_verified %}readonly{% endif %}
+                   required>
+
+            {% if company and company.email_verified %}
+                <span class="verified-badge">✔ Verified</span>
+            {% else %}
+                <button type="button" id="sendEmailBtn"
+                        class="otp-btn"
+                        onclick="sendEmailOTP()">Send OTP</button>
+            {% endif %}
+        </div>
+
+        {% if not company or not company.email_verified %}
+        <div class="otp-row" id="emailOtpRow">
+            <input type="text" id="email_otp" placeholder="Enter OTP">
+            <button type="button" class="otp-btn" onclick="verifyEmailOTP()">Verify</button>
+        </div>
+        {% endif %}
+
+        <div id="email_status" class="otp-status"></div>
+
+
+        <!-- Proof Document -->
+        <label>Upload Proof Document</label>
+        <small class="muted">Any one: Visiting Card / Website Screenshot / MSME / GST Certificate</small>
+
+        {% if company and company.proof_document %}
+            <p>Uploaded: <a href="{{ company.proof_document }}" target="_blank">View Document</a></p>
+        {% endif %}
+
+        <input type="file" name="proof_file" accept="image/*,application/pdf">
+
+
+        <!-- Submit -->
+        <button type="submit" class="primary-btn">Save & Submit for Verification</button>
+
+    </form>
+
+</div>
+
+<style>
+/* Container */
+.profile-wrapper {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0a575d;
+    text-align: center;
+}
+
+.subtext {
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Status Tags */
+.status-tag {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.status-tag.pending { background: #fff4c2; color: #8a6d00; }
+.status-tag.approved { background: #ccf5da; color: #0a7a3b; }
+.status-tag.rejected { background: #ffd6d6; color: #b10000; }
+
+/* Verified badge */
+.verified-badge {
+    background: #c7f9cc;
+    color: #066b2c;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+/* Form */
+.company-form label {
+    font-weight: 600;
+    margin-top: 14px;
+    display: block;
+}
+
+.req {
+    color: red;
+}
+
+.company-form input,
+.company-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+/* OTP */
+.otp-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.otp-btn {
+    background: #0a575d;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.otp-btn:hover {
+    background: #094c51;
+}
+
+.disabled-btn {
+    background: #bfbfbf !important;
+    cursor: not-allowed !important;
+}
+
+.otp-status {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Submit Button */
+.primary-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 14px;
+    background: #0a575d;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.primary-btn:hover {
+    background: #094c51;
+}
+
+/* Muted Text */
+.muted {
+    font-size: 13px;
+    color: #777;
+}
+</style>
+
+
+<!-- EMAIL OTP JAVASCRIPT -->
+<script>
+
+function startCountdown(buttonId) {
+    let seconds = 60;
+    const btn = document.getElementById(buttonId);
+
+    btn.disabled = true;
+    btn.classList.add("disabled-btn");
+
+    const interval = setInterval(() => {
+        btn.innerText = `Wait (${seconds}s)`;
+        seconds--;
+
+        if (seconds < 0) {
+            clearInterval(interval);
+            btn.innerText = "Send OTP";
+            btn.disabled = false;
+            btn.classList.remove("disabled-btn");
+        }
+    }, 1000);
+}
+
+/* ---------------------- EMAIL OTP ---------------------- */
+function sendEmailOTP() {
+    const email = document.getElementById("business_email").value;
+
+    if (!email) {
+        alert("Enter your business email first.");
+        return;
+    }
+
+    const fd = new FormData();
+    fd.append("email", email);
+
+    fetch("/employer/send-email-otp", { method: "POST", body: fd })
+        .then(() => {
+            document.getElementById("email_status").innerHTML = "OTP sent ✔";
+            startCountdown("sendEmailBtn");
+        })
+        .catch(() => {
+            document.getElementById("email_status").innerHTML = "❌ Error sending OTP";
+        });
+}
+
+function verifyEmailOTP() {
+    const otp = document.getElementById("email_otp").value;
+
+    const fd = new FormData();
+    fd.append("otp", otp);
+
+    fetch("/employer/verify-email-otp", { method: "POST", body: fd })
+        .then(r => r.text())
+        .then(res => {
+            if (res === "verified") {
+                document.getElementById("email_status").innerHTML = "✔ Email Verified";
+                document.getElementById("emailOtpRow").style.display = "none";
+                setTimeout(() => location.reload(), 800);
+            } else {
+                document.getElementById("email_status").innerHTML = "❌ Invalid OTP";
+            }
+        });
+}
+
+</script>
+
+{% endblock %}
