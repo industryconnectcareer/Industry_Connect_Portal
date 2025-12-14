@@ -27,7 +27,6 @@ python-slugify==8.0.1
 # ==============================
 # Data Handling & Analysis
 # ==============================
-pandas==2.1.4
 
 # ==============================
 # PDF / Report Generation
