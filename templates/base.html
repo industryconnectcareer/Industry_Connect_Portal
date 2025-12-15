@@ -156,10 +156,9 @@
         {% elif current_user.role == 'employer' %}
           <a href="{{ url_for('employer.dashboard') }}">Dashboard</a>
           <a href="{{ url_for('employer.post_internship') }}">Post Internships</a>
-          <a href="{{ url_for('employer.view_postings') }}">My Internships</a>
-          <a href="{{ url_for('employer.company_profile') }}">My Company Profile</a>
           <a href="{{ url_for('employer.post_ojt') }}">Post OJT</a>
-          <a href="{{ url_for('employer.view_ojts') }}">My OJTs</a>
+          <a href="{{ url_for('employer.view_postings') }}">My Posting</a>
+          <a href="{{ url_for('employer.company_profile') }}">My Company Profile</a>
 
       
         {% elif current_user.role == 'admin' %}
