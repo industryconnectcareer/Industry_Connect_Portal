@@ -13,7 +13,7 @@ app = create_app()
 DATA_DIR = "seed_data"
 
 # ---------------------------------------
-# ONE-TIME PASSWORD HASHES
+# PASSWORD HASHES
 # ---------------------------------------
 COLLEGE_HASH = bcrypt.generate_password_hash("College@123").decode()
 STUDENT_HASH = bcrypt.generate_password_hash("Student@123").decode()
@@ -27,9 +27,8 @@ with app.app_context():
     # COLLEGES
     # ==================================================
     with open(f"{DATA_DIR}/colleges.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        for row in csv.DictReader(f):
 
-        for row in reader:
             if User.query.filter_by(email=row["contact_email"]).first():
                 continue
 
@@ -62,9 +61,8 @@ with app.app_context():
     # STUDENTS
     # ==================================================
     with open(f"{DATA_DIR}/students_with_skills.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        for row in csv.DictReader(f):
 
-        for i, row in enumerate(reader, start=1):
             if User.query.filter_by(email=row["email"]).first():
                 continue
 
@@ -80,35 +78,30 @@ with app.app_context():
             )
             db.session.add(student)
 
-            if i % 500 == 0:
-                db.session.commit()
-                print(f"✔ {i} students inserted")
-
     db.session.commit()
     print("✅ Students seeded")
 
     # ==================================================
-    # COMPANIES
+    # COMPANIES + EMPLOYERS
     # ==================================================
     with open(f"{DATA_DIR}/companies.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        for row in csv.DictReader(f):
 
-        for row in reader:
             if User.query.filter_by(email=row["email"]).first():
                 continue
 
-            hr = Employer(
+            employer = User(
                 name=f"{row['company_name']} HR",
                 email=row["email"],
                 password=COMPANY_HASH,
                 role="employer",
                 is_verified=True
             )
-            db.session.add(hr)
+            db.session.add(employer)
             db.session.flush()
 
             company = Company(
-                user_id=hr.id,
+                user_id=employer.id,  # 🔥 KEY
                 company_name=row["company_name"],
                 tagline=row["tagline"],
                 industry=row["industry"],
@@ -129,19 +122,27 @@ with app.app_context():
     db.session.commit()
     print("✅ Companies seeded")
 
-    company_map = {c.id: c.company_name for c in Company.query.all()}
+    # ==================================================
+    # MAP: company_id → employer_user_id
+    # ==================================================
+    company_user_map = {
+        c.id: c.user_id for c in Company.query.all()
+    }
+
+    company_name_map = {
+        c.id: c.company_name for c in Company.query.all()
+    }
 
     # ==================================================
     # INTERNSHIPS
     # ==================================================
     with open(f"{DATA_DIR}/internships_with_skills.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        for row in csv.DictReader(f):
 
-        for row in reader:
             internship = Internship(
-                employer_id=company_user_map[int(row["company_id"])]
+                employer_id=company_user_map[int(row["company_id"])],
                 company_id=int(row["company_id"]),
-                company_name=company_map.get(int(row["company_id"])),
+                company_name=company_name_map[int(row["company_id"])],
                 title=row["title"],
                 mode=row["mode"],
                 location=row["location"],
@@ -160,13 +161,12 @@ with app.app_context():
     # OJT
     # ==================================================
     with open(f"{DATA_DIR}/ojt.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        for row in csv.DictReader(f):
 
-        for row in reader:
             ojt = OJT(
-                employer_id=company_user_map[int(row["company_id"])]
+                employer_id=company_user_map[int(row["company_id"])],
                 company_id=int(row["company_id"]),
-                company_name=company_map.get(int(row["company_id"])),
+                company_name=company_name_map[int(row["company_id"])],
                 title=row["title"],
                 mode=row["mode"],
                 location=row["location"],
@@ -182,16 +182,10 @@ with app.app_context():
     print("✅ OJT seeded")
 
     # ==================================================
-    # INTERNSHIP ↔ STUDENT MATCH (ANALYTICS)
+    # INTERNSHIP MATCH
     # ==================================================
     with open(f"{DATA_DIR}/internship_student_match.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-
-        for i, row in enumerate(reader, start=1):
-
-            student = db.session.get(User, int(row["student_id"]))
-            if not student:
-                continue
+        for row in csv.DictReader(f):
 
             match = InternshipMatch(
                 internship_id=int(row["internship_id"]),
@@ -200,20 +194,14 @@ with app.app_context():
             )
             db.session.add(match)
 
-            if i % 1000 == 0:
-                db.session.commit()
-                print(f"✔ {i} internship matches inserted")
-
     db.session.commit()
-    print("✅ Internship ↔ Student matches seeded")
+    print("✅ Internship matches seeded")
 
     # ==================================================
-    # FINAL PLACEMENTS (OUTCOME)
+    # PLACEMENTS
     # ==================================================
     with open(f"{DATA_DIR}/placements.csv", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-
-        for i, row in enumerate(reader, start=1):
+        for row in csv.DictReader(f):
 
             placement = Placement(
                 student_id=int(row["student_id"]),
@@ -226,10 +214,6 @@ with app.app_context():
                 is_active=True
             )
             db.session.add(placement)
-
-            if i % 500 == 0:
-                db.session.commit()
-                print(f"✔ {i} placements inserted")
 
     db.session.commit()
     print("🎉 ALL DUMMY DATA INSERTED SUCCESSFULLY!")
