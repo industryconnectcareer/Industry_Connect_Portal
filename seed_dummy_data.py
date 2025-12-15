@@ -97,7 +97,7 @@ with app.app_context():
             if User.query.filter_by(email=row["email"]).first():
                 continue
 
-            hr = User(
+            hr = Employer(
                 name=f"{row['company_name']} HR",
                 email=row["email"],
                 password=COMPANY_HASH,
@@ -139,6 +139,7 @@ with app.app_context():
 
         for row in reader:
             internship = Internship(
+                employer_id=company_user_map[int(row["company_id"])]
                 company_id=int(row["company_id"]),
                 company_name=company_map.get(int(row["company_id"])),
                 title=row["title"],
@@ -163,6 +164,7 @@ with app.app_context():
 
         for row in reader:
             ojt = OJT(
+                employer_id=company_user_map[int(row["company_id"])]
                 company_id=int(row["company_id"]),
                 company_name=company_map.get(int(row["company_id"])),
                 title=row["title"],
