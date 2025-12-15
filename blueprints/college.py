@@ -23,16 +23,23 @@ def get_college_or_redirect():
         return None
 
     college = College.query.filter_by(
-        user_id=current_user.id,
-        status="Approved",
-        is_active=True
+        user_id=current_user.id
     ).first()
 
     if not college:
+        flash("College profile not found", "danger")
+        return None
+
+    if college.status != "Approved":
         flash("College account not approved yet", "warning")
         return None
 
+    if not college.is_active:
+        flash("College account is inactive", "danger")
+        return None
+
     return college
+
 
 
 # =====================================================
