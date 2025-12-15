@@ -158,6 +158,83 @@ def delete_posting(id):
     flash("Internship deleted.", "success")
     return redirect(url_for("employer.view_postings"))
 
+# =====================================================
+# POST OJT
+# =====================================================
+@employer_bp.route("/post-ojt", methods=["GET", "POST"])
+@login_required
+def post_ojt():
+
+    company = Company.query.filter_by(user_id=current_user.id).first()
+
+    if not company:
+        flash("Complete company profile first.", "warning")
+        return redirect(url_for("employer.company_profile"))
+
+    if company.status != "Approved":
+        flash("Company must be approved by admin.", "danger")
+        return redirect(url_for("employer.company_profile"))
+
+    if not company.email_verified:
+        flash("Verify business email first.", "danger")
+        return redirect(url_for("employer.company_profile"))
+
+    if request.method == "POST":
+
+        ojt = OJT(
+            title=request.form.get("title"),
+            company_name=company.company_name,
+            category=request.form.get("category"),
+            stipend=request.form.get("stipend"),
+            duration=request.form.get("duration"),
+            mode=request.form.get("mode"),
+            location=request.form.get("location"),
+            skills=request.form.get("skills"),
+            responsibilities=request.form.get("responsibilities"),
+            employer_id=current_user.id,
+            status="Pending"
+        )
+
+        db.session.add(ojt)
+        db.session.commit()
+
+        flash("OJT submitted for approval.", "success")
+        return redirect(url_for("employer.view_ojts"))
+
+    return render_template("employer/post_ojt.html", company=company)
+
+# =====================================================
+# VIEW OJTs
+# =====================================================
+@employer_bp.route("/ojts")
+@login_required
+def view_ojts():
+
+    ojts = OJT.query.filter_by(
+        employer_id=current_user.id
+    ).all()
+
+    return render_template(
+        "employer/view_ojts.html",
+        ojts=ojts
+    )
+# =====================================================
+# DELETE OJT
+# =====================================================
+@employer_bp.route("/ojt/<int:id>/delete", methods=["POST"])
+@login_required
+def delete_ojt(id):
+
+    ojt = OJT.query.filter_by(
+        id=id,
+        employer_id=current_user.id
+    ).first_or_404()
+
+    db.session.delete(ojt)
+    db.session.commit()
+
+    flash("OJT deleted successfully.", "success")
+    return redirect(url_for("employer.view_ojts"))
 
 # =====================================================
 # APPLICATIONS REVIEW
